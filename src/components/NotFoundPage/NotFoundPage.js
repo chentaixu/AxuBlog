@@ -2,9 +2,13 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from '../../decorators/withStyles';
-import styles from './NotFoundPage.css';
+import lightish from './styles/lightish.css';
+import darkish from './styles/darkish.css';
 
-@withStyles(styles)
+let name = 'NotFoundPage';
+let styles = {lightish,darkish};
+
+@withStyles(name, styles)
 class NotFoundPage {
 
   static contextTypes = {

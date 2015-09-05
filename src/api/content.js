@@ -7,7 +7,7 @@ import fm from 'front-matter';
 import fs from '../utils/fs';
 
 // A folder with Jade/Markdown/HTML content pages
-const CONTENT_DIR = join(__dirname, './content');
+const CONTENT_DIR = join(__dirname, './contents');
 
 // Extract 'front matter' metadata and generate HTML
 const parseJade = (path, jadeContent) => {
@@ -35,7 +35,7 @@ router.get('/', async (req, res, next) => {
     if (!await fs.exists(fileName)) {
       res.status(404).send({error: `The page '${path}' is not found.`});
     } else {
-      const source = await fs.readFile(fileName, { encoding: 'utf8' });
+      const source = await fs.readFile(fileName);
       const content = parseJade(path, source);
       res.status(200).send(content);
     }

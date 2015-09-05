@@ -5,12 +5,22 @@ import invariant from 'fbjs/lib/invariant';
 import { canUseDOM } from 'fbjs/lib/ExecutionEnvironment';
 
 let count = 0;
+let DEFAULT_TYPE='default';
+let VARIANT_TYPE='variant';
 
-function withStyles(styles) {
+const getThemeStyle = (name, cssTheme, variant) => !variant? cssTheme[name][DEFAULT_TYPE]:cssTheme[name][VARIANT_TYPE][variant];
+
+
+function withStyles(name, styles) {
   return (ComposedComponent) => class WithStyles {
 
+    static propTypes = {
+      variant: PropTypes.string
+    };
+
     static contextTypes = {
-      onInsertCss: PropTypes.func
+      onInsertCss: PropTypes.func.isRequired,
+      cssTheme: PropTypes.object.isRequired
     };
 
     constructor() {
@@ -46,16 +56,17 @@ function withStyles(styles) {
     }
 
     componentWillMount() {
+      this.themeStyle =  getThemeStyle(name, this.context.cssTheme, this.props.variant);
       if (canUseDOM) {
-        invariant(styles.use, `The style-loader must be configured with reference-counted API.`);
-        styles.use();
+        invariant(styles[this.themeStyle].use, `The style-loader must be configured with reference-counted API.`);
+        styles[this.themeStyle].use();
       } else {
-        this.context.onInsertCss(styles.toString());
+        this.context.onInsertCss(styles[this.themeStyle].toString());
       }
     }
 
     componentWillUnmount() {
-      styles.unuse();
+      styles[this.themeStyle].unuse();
       if (this.styleId) {
         this.refCount--;
         if (this.refCount < 1) {

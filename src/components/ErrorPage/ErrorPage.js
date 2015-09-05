@@ -2,9 +2,13 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from '../../decorators/withStyles';
-import styles from './ErrorPage.css';
+import lightish from './styles/lightish.css';
+import darkish from './styles/darkish.css';
 
-@withStyles(styles)
+let name = 'ErrorPage';
+let styles = {lightish,darkish};
+
+@withStyles(name, styles)
 class ErrorPage {
 
   static contextTypes = {

@@ -1,0 +1,18 @@
+{
+  "App":{
+    "default":"lightish",
+    "variant":{}
+  },
+  "ContentPage":{
+    "default":"darkish",
+    "variant":{}
+  },
+  "ErrorPage":{
+    "default":"lightish",
+    "variant":{}
+  },
+  "NotFoundPage":{
+    "default":"lightish",
+    "variant":{}
+  }
+}

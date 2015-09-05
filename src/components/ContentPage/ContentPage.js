@@ -1,10 +1,14 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
 import React, { PropTypes } from 'react';
-import styles from './ContentPage.css';
+import lightish from './styles/lightish.css';
+import darkish from './styles/darkish.css';
 import withStyles from '../../decorators/withStyles';
 
-@withStyles(styles)
+let name = 'ContentPage';
+let styles = {lightish,darkish};
+
+@withStyles(name,styles)
 class ContentPage {
 
   static propTypes = {

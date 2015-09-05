@@ -15,6 +15,12 @@ const router = new Router(on => {
     return component && <App context={state.context}>{component}</App>;
   });
 
+  on('*', async (state, next) => {
+    state.context.cssTheme = await http.get(`/api/theme?path=${state.theme}`);
+    const component = await next();
+    return component;
+  });
+
   on('*', async (state) => {
     const content = await http.get(`/api/content?path=${state.path}`);
     return content && <ContentPage {...content} />;

@@ -1,0 +1,10 @@
+@import '../../../../node_modules/normalize.css/normalize.css';
+@import '../../variables.css';
+
+/*
+ * Base styles
+ * ========================================================================== */
+
+h3 {
+  background-color: #ee0000;
+}

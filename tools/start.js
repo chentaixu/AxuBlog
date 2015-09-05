@@ -12,7 +12,7 @@ import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
-global.WATCH = true;
+global.WATCH = false;
 const config = require('./config')[0]; // Client-side bundle configuration
 const bundler = webpack(config);
 
@@ -56,8 +56,9 @@ export default async () => {
     files: [
       'build/public/**/*.css',
       'build/public/**/*.html',
-      'build/content/**/*.*',
-      'build/templates/**/*.*'
+      'build/contents/**/*.*',
+      'build/templates/**/*.*',
+      'build/themes/**/*.*'
     ]
   });
 };
