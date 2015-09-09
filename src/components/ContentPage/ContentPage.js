@@ -1,12 +1,12 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
 import React, { PropTypes } from 'react';
-import lightish from './styles/lightish.css';
-import darkish from './styles/darkish.css';
+import ContentPageStyle from './styles/ContentPage.css';
 import withStyles from '../../decorators/withStyles';
+import Container from '../Container';
 
 let name = 'ContentPage';
-let styles = {lightish,darkish};
+let styles = {ContentPageStyle};
 
 @withStyles(name,styles)
 class ContentPage {
@@ -24,13 +24,13 @@ class ContentPage {
   render() {
     this.context.onSetTitle(this.props.title);
     return (
-      <div className="ContentPage">
-        <div className="ContentPage-container">
+      <div>
+        <Container uiList={['ui','text','cool']}>
           {
             this.props.path === '/' ? null : <h1>{this.props.title}</h1>
           }
           <div dangerouslySetInnerHTML={{__html: this.props.content || ''}} />
-        </div>
+        </Container>
       </div>
     );
   }

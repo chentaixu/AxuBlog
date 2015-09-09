@@ -1,13 +1,12 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
 import React, { PropTypes } from 'react';
-import lightish from './styles/lightish.css';
-import darkish from './styles/darkish.css';
+import AppStyle from './styles/App.css';
 import withContext from '../../decorators/withContext';
 import withStyles from '../../decorators/withStyles';
 
 let name = 'App';
-let styles = {lightish,darkish};
+let styles = {AppStyle};
 
 @withContext
 @withStyles(name,styles)

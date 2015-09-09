@@ -9,7 +9,9 @@ import Location from './core/Location';
 import ActionTypes from './constants/ActionTypes';
 import { addEventListener, removeEventListener } from './utils/DOMUtils';
 
-const container = document.getElementById('app');
+let appContainer = document.getElementById('app');
+let cssContainer = document.getElementById('css');
+
 const context = {
   onSetTitle: value => document.title = value,
   onSetMeta: (name, content) => {
@@ -28,29 +30,21 @@ const context = {
   }
 };
 
-function cleanUp() {
-  let done = false;
-  if (!done) {
-    // Remove the pre-rendered CSS because it's no longer used
-    // after the React app is launched
-    const css = document.getElementById('css');
-    if (css) {
-      css.parentNode.removeChild(css);
-      done = true;
-    }
-  }
-}
-
 function render(state) {
   Router.dispatch(state, (_, component) => {
-    ReactDOM.render(component, container, () => {
+    ReactDOM.render(component, appContainer, () => {
       // Restore the scroll position if it was saved into the state
       if (state.scrollY !== undefined) {
         window.scrollTo(state.scrollX, state.scrollY);
       } else {
         window.scrollTo(0, 0);
       }
-      cleanUp();
+      // Remove the pre-rendered CSS because it's no longer used
+      // after the React app is launched
+      if (cssContainer) {
+        cssContainer.parentNode.removeChild(cssContainer);
+        cssContainer = null;
+      }
     });
   });
 }
@@ -59,7 +53,6 @@ function run() {
   let currentLocation = null;
   let currentState = null;
   let theme = 'default';
-
   // Make taps on links and buttons work fast on mobiles
   FastClick.attach(document.body);
 

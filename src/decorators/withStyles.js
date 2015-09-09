@@ -10,12 +10,23 @@ let VARIANT_TYPE='variant';
 
 const getThemeStyle = (name, cssTheme, variant) => !variant? cssTheme[name][DEFAULT_TYPE]:cssTheme[name][VARIANT_TYPE][variant];
 
+const getUiAttributes = (attrs, style) => {
+  let uiString = '';
+  if(!(attrs instanceof Array)) return uiString;
+  attrs.map((attr)=>{
+    let localAttr = style.locals[attr];
+    localAttr? (uiString=uiString+localAttr+' '):(uiString=uiString+attr+' ');
+  });
+  return uiString.trim();
+};
 
 function withStyles(name, styles) {
   return (ComposedComponent) => class WithStyles {
 
     static propTypes = {
-      variant: PropTypes.string
+      variant: PropTypes.string,
+      uiList: PropTypes.array
+
     };
 
     static contextTypes = {
@@ -79,7 +90,10 @@ function withStyles(name, styles) {
     }
 
     render() {
-      return <ComposedComponent {...this.props} />;
+      let styleObj = styles[this.themeStyle];
+      let {uiList, ...other} = this.props;
+      let uiStringVal = getUiAttributes(uiList,styleObj);
+      return <ComposedComponent {...other} uiString={uiStringVal}/>;
     }
 
   };

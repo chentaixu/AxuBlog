@@ -1,0 +1,98 @@
+@import "./ContainerVars.css";
+
+/*******************************
+            Container
+*******************************/
+
+.ui {
+  display: block;
+  max-width: var(--maxWidth);
+
+  /* Mobile */
+  @custom-media --mobile-viewport only screen and max-width:$largestMobileScreenVar ;
+
+  @media (--mobile-viewport){
+    width: var(--mobileWidth);
+    margin-left: var(--mobileGutter);
+    margin-right: var(--mobileGutter);
+    .grid&{
+      width: var(--mobileGridWidth);
+      .relaxed&{
+        width: var(--mobileRelaxedGridWidth);
+        .very&{
+          width: var(--mobileVeryRelaxedGridWidth);
+        }
+      }
+    }
+  }
+
+
+  /* Tablet */
+  @custom-media --tablet-viewport only screen and (min-width:$tabletBreakpointVar) and (max-width:$largestTabletScreenVar);
+
+  @media (--tablet-viewport){
+    width: var(--tabletWidth);
+    margin-left: var(--tabletGutter);
+    margin-right: var(--tabletGutter);
+    .grid&{
+      width: var(--tabletGridWidth);
+      .relaxed&{
+        width: var(--tabletRelaxedGridWidth);
+        .very&{
+          width: var(--tabletVeryRelaxedGridWidth);
+        }
+      }
+    }
+  }
+
+  /* Small Monitor */
+  @custom-media --computer-viewport only screen and (min-width:$computerBreakpointVar) and (max-width:$largestSmallMonitorVar);
+
+  @media (--computer-viewport){
+
+    width: var(--computerWidth);
+    margin-left: var(--computerGutter);
+    margin-right: var(--computerGutter);
+      .grid&{
+        width: var(--computerGridWidth);
+        .relaxed&{
+          width: var(--computerRelaxedGridWidth);
+          .very&{
+            width: var(--computerVeryRelaxedGridWidth);
+          }
+      }
+    }
+  }
+
+  /* Large Monitor */
+  @custom-media --largeMonitor-viewport only screen and (min-width:$largeMonitorBreakpointVar);
+
+  @media (--largeMonitor-viewport){
+    width: var(--largeMonitorWidth);
+    margin-left: var(--largeMonitorGutter);
+    margin-right: var(--largeMonitorGutter);
+    .grid&{
+      width: var(--largeMonitorGridWidth);
+      .relaxed&{
+        width: var(--largeMonitorRelaxedGridWidth);
+        .very&{
+          width: var(--largeMonitorVeryRelaxedGridWidth);
+        }
+      }
+    }
+  }
+
+
+  /* Types */
+  .text&{
+    font-family: var(--textFontFamily);
+    max-width: var(--textWidth);
+    line-height: var(--textLineHeight);
+    font-size: var(--textSize);
+  }
+
+  .flud&{
+    width: 100%;
+  }
+
+}

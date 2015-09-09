@@ -1,18 +1,22 @@
 {
   "App":{
-    "default":"lightish",
+    "default":"AppStyle",
     "variant":{}
   },
   "ContentPage":{
-    "default":"darkish",
+    "default":"ContentPageStyle",
     "variant":{}
   },
   "ErrorPage":{
-    "default":"lightish",
+    "default":"ErrorPageStyle",
     "variant":{}
   },
   "NotFoundPage":{
-    "default":"lightish",
+    "default":"NotFoundPageStyle",
+    "variant":{}
+  },
+  "Container":{
+    "default":"ContainerStyle",
     "variant":{}
   }
 }

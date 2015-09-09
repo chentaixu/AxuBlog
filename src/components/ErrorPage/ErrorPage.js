@@ -2,11 +2,10 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from '../../decorators/withStyles';
-import lightish from './styles/lightish.css';
-import darkish from './styles/darkish.css';
+import ErrorPageStyle from './styles/ErrorPage.css';
 
 let name = 'ErrorPage';
-let styles = {lightish,darkish};
+let styles = {ErrorPageStyle};
 
 @withStyles(name, styles)
 class ErrorPage {

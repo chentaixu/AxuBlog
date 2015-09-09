@@ -1,0 +1,107 @@
+:root {
+
+
+  /*-------------------
+          Fonts
+  --------------------*/
+
+  --fontName          : 'Lato';
+  --fontSmoothing     : antialiased;
+
+  --headerFont        : var(--fontName), 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --pageFont          : var(--fontName), 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+
+  /*-------------------
+        Base Sizes
+  --------------------*/
+
+  font-size: 14px;
+
+  /*-------------------
+          Sizes
+  --------------------*/
+
+  /*
+    Sizes are all expressed in terms of 14px/em (default em)
+    This ensures these "ratios" remain constant despite changes in EM
+  */
+
+  --miniSize        : calc(10 / 14);
+  --tinySize        : calc(12 / 14);
+  --smallSize       : calc(13 / 14);
+  --mediumSize      : calc(14 / 14);
+  --largeSize       : calc(16 / 14);
+  --bigSize         : calc(18 / 14);
+  --hugeSize        : calc(20 / 14);
+  --massiveSize     : calc(24 / 14);
+
+  /*-------------------
+         Em Sizes
+  --------------------*/
+
+  /*
+    This rounds @size values to the closest pixel then expresses that value in (r)em.
+    This ensures all size values round to exact pixels
+  */
+  --mini            : var(--miniSize)rem;
+  --tiny            : var(--tinySize)rem;
+  --small           : var(--smallSize)rem;
+  --medium          : var(--mediumSize)rem;
+  --large           : var(--largeSize)rem;
+  --big             : var(--bigSize)rem;
+  --huge            : var(--hugeSize)rem;
+  --massive         : var(--massiveSize)rem;
+
+  /* em */
+  --relativeMini    : var(--miniSize)em;
+  --relativeTiny    : var(--tinySize)em;
+  --relativeSmall   : var(--smallSize)em;
+  --relativeMedium  : var(--mediumSize)em;
+  --relativeLarge   : var(--largeSize)em;
+  --relativeBig     : var(--bigSize)em;
+  --relativeHuge    : var(--hugeSize)em;
+  --relativeMassive : var(--massiveSize)em;
+
+  /* rem */
+  --absoluteMini    : var(--miniSize)rem;
+  --absoluteTiny    : var(--tinySize)rem;
+  --absoluteSmall   : var(--smallSize)rem;
+  --absoluteMedium  : var(--mediumSize)rem;
+  --absoluteLarge   : var(--largeSize)rem;
+  --absoluteBig     : var(--bigSize)rem;
+  --absoluteHuge    : var(--hugeSize)rem;
+  --absoluteMassive : var(--massiveSize)rem;
+
+  /*-------------------
+      Breakpoints
+  --------------------*/
+
+  --mobileBreakpoint            : 320px;
+  --tabletBreakpoint            : 768px;
+  --computerBreakpoint          : 992px;
+  --largeMonitorBreakpoint      : 1200px;
+  --widescreenMonitorBreakpoint : 1920px;
+
+
+  $mobileBreakpointVar            : var(--mobileBreakpoint);
+  $tabletBreakpointVar            : var(--tabletBreakpoint);
+  $computerBreakpointVar          : var(--computerBreakpoint);
+  $largeMonitorBreakpointVar      : var(--largeMonitorBreakpoint);
+  $widescreenMonitorBreakpointVar : var(--widescreenMonitorBreakpoint);
+
+
+  /*-------------------
+      Derived Values
+  --------------------*/
+  /* Rendered Scrollbar Width */
+  --scrollbarWidth: 17px;
+
+  /* Responsive */
+  $largestMobileScreenVar : calc(var(--tabletBreakpoint) - 1px);
+  $largestTabletScreenVar : calc(var(--computerBreakpoint) - 1px);
+  $largestSmallMonitorVar : calc(var(--largeMonitorBreakpoint) - 1px);
+  $largestLargeMonitorVar : calc(var(--widescreenMonitorBreakpoint) - 1px);
+
+
+}

@@ -2,11 +2,10 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from '../../decorators/withStyles';
-import lightish from './styles/lightish.css';
-import darkish from './styles/darkish.css';
+import NotFoundPageStyle from './styles/NotFoundPage.css';
 
 let name = 'NotFoundPage';
-let styles = {lightish,darkish};
+let styles = {NotFoundPageStyle};
 
 @withStyles(name, styles)
 class NotFoundPage {
