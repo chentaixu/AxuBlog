@@ -25,11 +25,14 @@ class ContentPage {
     this.context.onSetTitle(this.props.title);
     return (
       <div>
-        <Container uiList={['ui','text','cool']}>
+        <Container uiList={['ui','text']}>
           {
             this.props.path === '/' ? null : <h1>{this.props.title}</h1>
           }
           <div dangerouslySetInnerHTML={{__html: this.props.content || ''}} />
+        </Container>
+        <Container uiList={['ui','centerAligned']}>
+          <h1>Cool Shit</h1>
         </Container>
       </div>
     );

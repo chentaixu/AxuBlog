@@ -91,8 +91,24 @@
     font-size: var(--textSize);
   }
 
-  .flud&{
+  .fluid&{
     width: 100%;
   }
 
+  .leftAligned&{
+    text-align: left;
+  }
+
+  .rightAligned&{
+    text-align: right;
+  }
+
+  .centerAligned&{
+    text-align: center;
+  }
+
+  .justified&{
+    text-align: justify;
+    hyphens: auto;
+  }
 }
