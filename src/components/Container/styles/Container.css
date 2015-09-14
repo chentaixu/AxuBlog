@@ -4,26 +4,17 @@
             Container
 *******************************/
 
-.ui {
+.container {
   display: block;
   max-width: var(--maxWidth);
 
   /* Mobile */
-  @custom-media --mobile-viewport only screen and max-width:$largestMobileScreenVar ;
+  @custom-media --mobile-viewport only screen and max-width:$largestMobileScreenVar;
 
   @media (--mobile-viewport){
     width: var(--mobileWidth);
     margin-left: var(--mobileGutter);
     margin-right: var(--mobileGutter);
-    .grid&{
-      width: var(--mobileGridWidth);
-      .relaxed&{
-        width: var(--mobileRelaxedGridWidth);
-        .very&{
-          width: var(--mobileVeryRelaxedGridWidth);
-        }
-      }
-    }
   }
 
 
@@ -34,15 +25,6 @@
     width: var(--tabletWidth);
     margin-left: var(--tabletGutter);
     margin-right: var(--tabletGutter);
-    .grid&{
-      width: var(--tabletGridWidth);
-      .relaxed&{
-        width: var(--tabletRelaxedGridWidth);
-        .very&{
-          width: var(--tabletVeryRelaxedGridWidth);
-        }
-      }
-    }
   }
 
   /* Small Monitor */
@@ -53,15 +35,6 @@
     width: var(--computerWidth);
     margin-left: var(--computerGutter);
     margin-right: var(--computerGutter);
-      .grid&{
-        width: var(--computerGridWidth);
-        .relaxed&{
-          width: var(--computerRelaxedGridWidth);
-          .very&{
-            width: var(--computerVeryRelaxedGridWidth);
-          }
-      }
-    }
   }
 
   /* Large Monitor */
@@ -71,44 +44,36 @@
     width: var(--largeMonitorWidth);
     margin-left: var(--largeMonitorGutter);
     margin-right: var(--largeMonitorGutter);
-    .grid&{
-      width: var(--largeMonitorGridWidth);
-      .relaxed&{
-        width: var(--largeMonitorRelaxedGridWidth);
-        .very&{
-          width: var(--largeMonitorVeryRelaxedGridWidth);
-        }
-      }
-    }
   }
 
 
   /* Types */
-  .text&{
+  &.text{
     font-family: var(--textFontFamily);
     max-width: var(--textWidth);
     line-height: var(--textLineHeight);
     font-size: var(--textSize);
   }
 
-  .fluid&{
+  &.fluid{
     width: 100%;
   }
 
-  .leftAligned&{
-    text-align: left;
+
+  &.aligned {
+    &ToLeft {
+      text-align: left;
+    }
+    &ToRight {
+      text-align: right;
+    }
+    &ToCenter {
+      text-align: center;
+    }
+    &ToJustified {
+      text-align: justify;
+      hyphens: auto;
+    }
   }
 
-  .rightAligned&{
-    text-align: right;
-  }
-
-  .centerAligned&{
-    text-align: center;
-  }
-
-  .justified&{
-    text-align: justify;
-    hyphens: auto;
-  }
 }

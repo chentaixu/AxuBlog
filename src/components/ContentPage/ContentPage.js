@@ -1,15 +1,16 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import ContentPageStyle from './styles/ContentPage.css';
 import withStyles from '../../decorators/withStyles';
 import Container from '../Container';
+import Segment from '../Segment';
 
 let name = 'ContentPage';
 let styles = {ContentPageStyle};
 
 @withStyles(name,styles)
-class ContentPage {
+class ContentPage extends Component {
 
   static propTypes = {
     path: PropTypes.string.isRequired,
@@ -25,14 +26,13 @@ class ContentPage {
     this.context.onSetTitle(this.props.title);
     return (
       <div>
-        <Container uiList={['ui','text']}>
+        <Container uiList={['container','text']}>
+          <Segment uiList={['segment','red']}>
           {
             this.props.path === '/' ? null : <h1>{this.props.title}</h1>
           }
           <div dangerouslySetInnerHTML={{__html: this.props.content || ''}} />
-        </Container>
-        <Container uiList={['ui','centerAligned']}>
-          <h1>Cool Shit</h1>
+          </Segment>
         </Container>
       </div>
     );

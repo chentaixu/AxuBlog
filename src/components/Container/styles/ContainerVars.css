@@ -1,4 +1,4 @@
-@import "../../SiteVars.css";
+  @import "../../SiteVars.css";
 
 :root {
 
@@ -21,26 +21,6 @@
   --largeMonitorMinimumGutter: 2rem;
   --largeMonitorWidth: calc((var(--largeMonitorBreakpoint)- var(--scrollbarWidth)) - (var(--largeMonitorMinimumGutter) * 2) );
   --largeMonitorGutter: auto;
-
-  /* Coupling (Add Negative Margin to container size) */
-  --gridGutterWidth: 2rem;
-  --relaxedGridGutterWidth: 3rem;
-  --veryRelaxedGridGutterWidth: 5rem;
-
-  --mobileGridWidth: var(--mobileWidth);
-  --tabletGridWidth: calc(var(--tabletWidth) + var(--gridGutterWidth));
-  --computerGridWidth: calc(var(--computerWidth) + var(--gridGutterWidth));
-  --largeMonitorGridWidth: calc(var(--largeMonitorWidth) + var(--gridGutterWidth));
-
-  --mobileRelaxedGridWidth: var(--mobileWidth);
-  --tabletRelaxedGridWidth: calc(var(--tabletWidth) + var(--relaxedGridGutterWidth));
-  --computerRelaxedGridWidth: calc(var(--computerWidth) + var(--relaxedGridGutterWidth));
-  --largeMonitorRelaxedGridWidth: calc(var(--largeMonitorWidth) + var(--relaxedGridGutterWidth));
-
-  --mobileVeryRelaxedGridWidth: var(--mobileWidth);
-  --tabletVeryRelaxedGridWidth: calc(var(--tabletWidth) + var(--veryRelaxedGridGutterWidth));
-  --computerVeryRelaxedGridWidth: calc(var(--computerWidth) + var(--veryRelaxedGridGutterWidth));
-  --largeMonitorVeryRelaxedGridWidth: calc(var(--largeMonitorWidth) + var(--veryRelaxedGridGutterWidth));
 
   /*-------------------
          Types

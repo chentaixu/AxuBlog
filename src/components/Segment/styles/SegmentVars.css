@@ -1,0 +1,118 @@
+@import "../../SiteVars.css";
+
+:root {
+  /*-------------------
+         Element
+  --------------------*/
+
+  --background: var(--white);
+  --borderWidth: 1px;
+  --border: var(--borderWidth) solid var(--borderColor);
+
+  --boxShadow: var(--subtleShadow);
+  --verticalPadding: 1em;
+  --horizontalPadding: 1em;
+  --padding: var(--verticalPadding) var(--horizontalPadding);
+
+  --verticalMargin: 1rem;
+  --horizontalMargin: 0em;
+  --margin: var(--verticalMargin) var(--horizontalMargin);
+  --borderRadius: var(--defaultBorderRadius);
+
+  /*-------------------
+         Group
+  --------------------*/
+
+  --groupedMargin: var(--margin);
+  --groupedBorder: var(--border);
+  --groupedBoxShadow: var(--boxShadow);
+  --groupedBorderRadius: var(--borderRadius);
+
+  --nestedGroupMargin: var(--verticalMargin) var(--verticalMargin);
+
+  --groupedSegmentBorder: none;
+  --groupedSegmentDivider: var(--border);
+  --groupedSegmentMargin: 0em;
+  --groupedSegmentWidth: auto;
+  --groupedSegmentBoxShadow: none;
+
+  /*******************************
+              States
+  *******************************/
+
+  /* Loading Dimmer */
+  --loaderDimmerColor: rgba(255, 255, 255, 0.8);
+  --loaderDimmerZIndex: 100;
+
+  /* Loading Spinner */
+  --loaderSize: 3em;
+  --loaderLineZIndex: 101;
+
+
+  /*******************************
+              Variations
+  *******************************/
+
+  /* Piled */
+  --piledZIndex: auto;
+  --piledMargin: 3em;
+  --piledBoxShadow: '';
+  --piledDegrees: 1.2deg;
+  --piledBorder: var(--border);
+
+  /* Circular */
+  --circularPadding: 2em;
+
+  /* Stacked */
+  --stackedHeight: 6px;
+  --stackedPageBackground: var(--subtleTransparentBlack);
+  --stackedPadding: calc(var(--verticalPadding) + 0.4em);
+  --tallStackedPadding: calc(var(--verticalPadding) + 0.8em);
+
+  /* Raised */
+  --raisedBoxShadow: var(--floatingShadow);
+
+  /* Padded */
+  --paddedSegmentPadding: 1.5em;
+  --veryPaddedSegmentPadding: 3em;
+
+  /* Attached */
+  --attachedTopOffset: 0px;
+  --attachedBottomOffset: 0px;
+  --attachedHorizontalOffset: calc((-1)*var(--borderWidth));
+  --attachedWidth: calc(100% - (var(--attachedHorizontalOffset) * 2));
+  --attachedBoxShadow: none;
+  --attachedBorder: var(--borderWidth) solid var(--solidBorderColor);
+  --attachedBottomBoxShadow: var(--boxShadow), var(--attachedBoxShadow);
+
+  /* Inverted */
+  --invertedBackground: var(--black);
+
+  /* Floated */
+  --floatedDistance: 1em;
+
+  /* Basic */
+  --basicBackground: none transparent;
+  --basicBorder: none;
+  --basicBoxShadow: none;
+  --basicBorderRadius: 0px;
+
+  /* Colors */
+  --coloredBorderSize: 2px;
+
+  /* Ordinality */
+  --secondaryBackground: var(--darkWhite);
+  --secondaryColor: var(--mutedTextColor);
+
+  --tertiaryBackground:  var(--midWhite);
+  --tertiaryColor: var(--mutedTextColor);
+
+  --secondaryInvertedLightness: 0.2;
+  --secondaryInvertedBackground: color(var(--black) lightness(var(--secondaryInvertedLightness))) linear-gradient(rgba(255, 255, 255, var(--secondaryInvertedLightness)) 0%, rgba(255, 255, 255, var(--secondaryInvertedLightness)) 100%);
+  --secondaryInvertedColor: var(--invertedMutedTextColor);
+
+  --tertiaryInvertedLightness: 0.35;
+  --tertiaryInvertedBackground: color(var(--black) lightness(var(--tertiaryInvertedLightness))) linear-gradient(rgba(255, 255, 255, var(--tertiaryInvertedLightness)) 0%, rgba(255, 255, 255, var(--tertiaryInvertedLightness)) 100%);
+  --tertiaryInvertedColor: var(--invertedMutedTextColor);
+
+}

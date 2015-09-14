@@ -1,15 +1,15 @@
 import React, { PropTypes, Component } from 'react';
-import ContainerStyle from './styles/Container.css';
+import SegmentStyle from './styles/Segment.css';
 import withStyles from '../../decorators/withStyles';
 
-let name = 'Container';
-let styles = {ContainerStyle};
+let name = 'Segment';
+let styles = {SegmentStyle};
 
 @withStyles(name,styles)
-class Container extends Component {
+class Segment extends Component {
 
   static propTypes = {
-      uiString: PropTypes.string.isRequired
+    uiString: PropTypes.string.isRequired
   };
 
 
@@ -23,4 +23,4 @@ class Container extends Component {
 
 }
 
-export default Container;
+export default Segment;

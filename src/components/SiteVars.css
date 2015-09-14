@@ -17,6 +17,64 @@
   --------------------*/
 
   font-size: 14px;
+  --rootFontSize: 14px;
+
+  /*-------------------
+      Border Radius
+  --------------------*/
+
+  --relativeBorderRadius: var(--relative4px);
+  --absoluteBorderRadius: 4px;
+
+  --defaultBorderRadius: var(--absoluteBorderRadius);
+
+  /*-------------------
+      Brand Colors
+  --------------------*/
+
+  --primaryColor        : var(--blue);
+  --secondaryColor      : var(--black);
+
+  --lightPrimaryColor   : var(--lightBlue);
+  --lightSecondaryColor : var(--lightBlack);
+
+  /*--------------
+    Page Heading
+  ---------------*/
+
+  --headerFontWeight : bold;
+  --headerLineHeight : 1.2857em;
+
+  --h1 : 2rem;
+  --h2 : 1.714rem;
+  --h3 : 1.28rem;
+  --h4 : 1.071rem;
+  --h5 : 1rem;
+
+  /*--------------
+     Form Input
+  ---------------*/
+
+  /* This adjusts the default form input across all elements */
+  --inputBackground        : var(--white);
+  --inputVerticalPadding   : var(--relative11px);
+  --inputHorizontalPadding : var(--relative14px);
+  --inputPadding           : var(--inputVerticalPadding) var(--inputHorizontalPadding);
+
+  /* Line Height Default For Inputs in Browser */
+  --inputLineHeight: 1.2142em;
+
+  /*-------------------
+      Focused Input
+  --------------------*/
+
+  /* Used on inputs, textarea etc */
+  --focusedFormBorderColor: #85B7D9;
+
+  /* Used on dropdowns, other larger blocks */
+  --focusedFormMutedBorderColor: #96C8DA;
+
+
 
   /*-------------------
           Sizes
@@ -35,6 +93,228 @@
   --bigSize         : calc(18 / 14);
   --hugeSize        : calc(20 / 14);
   --massiveSize     : calc(24 / 14);
+
+  /*-------------------
+          Page
+  --------------------*/
+
+  --pageBackground      : #FFFFFF;
+  --pageOverflowX       : hidden;
+
+  --lineHeight          : 1.4285em;
+  --textColor           : rgba(0, 0, 0, 0.87);
+
+  /*-------------------
+        Paragraph
+  --------------------*/
+
+  --paragraphMargin     : 0em 0em 1em;
+  --paragraphLineHeight : var(--lineHeight);
+
+  /*-------------------
+         Links
+  --------------------*/
+
+  --linkColor           : #4183C4;
+  --linkUnderline       : none;
+  --linkHoverColor      : color(var(--linkColor) lightness(- 15%) saturation(+ 20%));
+  --linkHoverUnderline  : var(--linkUnderline);
+
+  /*-------------------
+    Highlighted Text
+  --------------------*/
+
+  --highlightBackground      : #CCE2FF;
+  --highlightColor           : var(--textColor);
+
+  --inputHighlightBackground : rgba(100, 100, 100, 0.4);
+  --inputHighlightColor      : var(--textColor);
+
+
+  /*-------------------
+         Loader
+  --------------------*/
+
+  --loaderSize              : var(--relativeBig);
+  --loaderSpeed             : 0.6s;
+  --loaderLineWidth         : 0.2em;
+  --loaderFillColor         : rgba(0, 0, 0, 0.1);
+  --loaderLineColor         : var(--grey);
+
+  --invertedLoaderFillColor : rgba(255, 255, 255, 0.15);
+  --invertedLoaderLineColor : var(--white);
+
+  /*-------------------
+          Grid
+  --------------------*/
+
+  --columnCount: 16;
+
+  /*-------------------
+       Transitions
+  --------------------*/
+
+  --defaultDuration : 0.1s;
+  --defaultEasing   : ease;
+
+
+  /*-------------------
+      Breakpoints
+  --------------------*/
+
+  --mobileBreakpoint            : 320px;
+  --tabletBreakpoint            : 768px;
+  --computerBreakpoint          : 992px;
+  --largeMonitorBreakpoint      : 1200px;
+  --widescreenMonitorBreakpoint : 1920px;
+
+
+  $mobileBreakpointVar            : var(--mobileBreakpoint);
+  $tabletBreakpointVar            : var(--tabletBreakpoint);
+  $computerBreakpointVar          : var(--computerBreakpoint);
+  $largeMonitorBreakpointVar      : var(--largeMonitorBreakpoint);
+  $widescreenMonitorBreakpointVar : var(--widescreenMonitorBreakpoint);
+
+
+  /*-------------------
+        Site Colors
+  --------------------*/
+
+  /*---  Colors  ---*/
+  --red              : #DB2828;
+  --orange           : #F2711C;
+  --yellow           : #FBBD08;
+  --olive            : #B5CC18;
+  --green            : #21BA45;
+  --teal             : #00B5AD;
+  --blue             : #2185D0;
+  --violet           : #6435C9;
+  --purple           : #A333C8;
+  --pink             : #E03997;
+  --brown            : #A5673F;
+  --grey             : #767676;
+  --black            : #1B1C1D;
+
+  /*---  Light Colors  ---*/
+  --lightRed         : #FF695E;
+  --lightOrange      : #FF851B;
+  --lightYellow      : #FFE21F;
+  --lightOlive       : #D9E778;
+  --lightGreen       : #2ECC40;
+  --lightTeal        : #6DFFFF;
+  --lightBlue        : #54C8FF;
+  --lightViolet      : #A291FB;
+  --lightPurple      : #DC73FF;
+  --lightPink        : #FF8EDF;
+  --lightBrown       : #D67C1C;
+  --lightGrey        : #DCDDDE;
+  --lightBlack       : #545454;
+
+  /*---   Neutrals  ---*/
+  --fullBlack        : #000000;
+  --offWhite         : #F9FAFB;
+  --darkWhite        : #F3F4F5;
+  --midWhite         : #DCDDDE;
+  --white            : #FFFFFF;
+
+  /*--- Colored Backgrounds ---*/
+  --redBackground    : #FFE8E6;
+  --orangeBackground : #FFEDDE;
+  --yellowBackground : #FFF8DB;
+  --oliveBackground  : #FBFDEF;
+  --greenBackground  : #E5F9E7;
+  --tealBackground   : #E1F7F7;
+  --blueBackground   : #DFF0FF;
+  --violetBackground : #EAE7FF;
+  --purpleBackground : #F6E7FF;
+  --pinkBackground   : #FFE3FB;
+  --brownBackground  : #F1E2D3;
+
+  /*--- Colored Headers ---*/
+  --redHeaderColor    : color(var(--redTextColor) lightness(- 5%));
+  --oliveHeaderColor  : color(var(--oliveTextColor) lightness(- 5%));
+  --greenHeaderColor  : color(var(--greenTextColor) lightness(- 5%));
+  --yellowHeaderColor : color(var(--yellowTextColor) lightness(- 5%));
+  --blueHeaderColor   : color(var(--blueTextColor) lightness(- 5%));
+  --tealHeaderColor   : color(var(--tealTextColor) lightness(- 5%));
+  --pinkHeaderColor   : color(var(--pinkTextColor) lightness(- 5%));
+  --violetHeaderColor : color(var(--violetTextColor) lightness(- 5%));
+  --purpleHeaderColor : color(var(--purpleTextColor) lightness(- 5%));
+  --orangeHeaderColor : color(var(--orangeTextColor) lightness(- 5%));
+  --brownHeaderColor  : color(var(--brownTextColor) lightness(- 5%));
+
+  /*--- Colored Text ---*/
+  --redTextColor    : var(--red);
+  --orangeTextColor : var(--orange);
+  --yellowTextColor : #B58105;
+  --oliveTextColor  : #8ABC1E;
+  --greenTextColor  : #1EBC30;
+  --tealTextColor   : #10A3A3;
+  --blueTextColor   : var(--blue);
+  --violetTextColor : var(--violet);
+  --purpleTextColor : var(--purple);
+  --pinkTextColor   : var(--pink);
+  --brownTextColor  : var(--brown);
+
+  /*-------------------
+       Alpha Colors
+  --------------------*/
+
+  --subtleTransparentBlack     : rgba(0, 0, 0, 0.03);
+  --transparentBlack           : rgba(0, 0, 0, 0.05);
+  --strongTransparentBlack     : rgba(0, 0, 0, 0.10);
+  --veryStrongTransparentBlack : rgba(0, 0, 0, 0.15);
+
+  --subtleTransparentWhite     : rgba(255, 255, 255, 0.02);
+  --transparentWhite           : rgba(255, 255, 255, 0.08);
+  --strongTransparentWhite     : rgba(255, 255, 255, 0.15);
+
+  /*-------------------
+         Accents
+  --------------------*/
+
+  /* Differentiating Neutrals */
+  --subtleGradient: linear-gradient(transparent, var(--transparentBlack));
+
+  /* Differentiating Layers */
+  --subtleShadow: 0px 1px 2px 0 var(--borderColor);
+  --floatingShadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.08);
+
+  /*******************************
+             Power-User
+  *******************************/
+
+  /*-------------------
+      Emotive Colors
+  --------------------*/
+
+  /* Positive */
+  --positiveColor           : var(--green);
+  --positiveBackgroundColor : #FCFFF5;
+  --positiveBorderColor     : #A3C293;
+  --positiveHeaderColor     : #1A531B;
+  --positiveTextColor       : #2C662D;
+
+  /* Negative */
+  --negativeColor           : var(--red);
+  --negativeBackgroundColor : #FFF6F6;
+  --negativeBorderColor     : #E0B4B4;
+  --negativeHeaderColor     : #912D2B;
+  --negativeTextColor       : #9F3A38;
+
+  /* Info */
+  --infoColor              : #31CCEC;
+  --infoBackgroundColor    : #F8FFFF;
+  --infoBorderColor        : #A9D5DE;
+  --infoHeaderColor        : #0E566C;
+  --infoTextColor          : #276F86;
+
+  /* Warning */
+  --warningColor           : #F2C037;
+  --warningBorderColor     : #C9BA9B;
+  --warningBackgroundColor : #FFFAF3;
+  --warningHeaderColor     : #794B02;
+  --warningTextColor       : #573A08;
 
   /*-------------------
          Em Sizes
@@ -73,29 +353,129 @@
   --absoluteHuge    : var(--hugeSize)rem;
   --absoluteMassive : var(--massiveSize)rem;
 
+
   /*-------------------
-      Breakpoints
+    Exact Pixel Values
+  --------------------*/
+  --relative1px  : calc(1 / var(--rootFontSize))em;
+  --relative2px  : calc(2 / var(--rootFontSize))em;
+  --relative3px  : calc(3 / var(--rootFontSize))em;
+  --relative4px  : calc(4 / var(--rootFontSize))em;
+  --relative5px  : calc(5 / var(--rootFontSize))em;
+  --relative6px  : calc(6 / var(--rootFontSize))em;
+  --relative7px  : calc(7 / var(--rootFontSize))em;
+  --relative8px  : calc(8 / var(--rootFontSize))em;
+  --relative9px  : calc(9 / var(--rootFontSize))em;
+  --relative10px : calc(10 / var(--rootFontSize))em;
+  --relative11px : calc(11 / var(--rootFontSize))em;
+  --relative12px : calc(12 / var(--rootFontSize))em;
+  --relative13px : calc(13 / var(--rootFontSize))em;
+  --relative14px : calc(14 / var(--rootFontSize))em;
+
+  /*-------------------
+         Icons
   --------------------*/
 
-  --mobileBreakpoint            : 320px;
-  --tabletBreakpoint            : 768px;
-  --computerBreakpoint          : 992px;
-  --largeMonitorBreakpoint      : 1200px;
-  --widescreenMonitorBreakpoint : 1920px;
+  /* Maximum Glyph Width of Icon */
+  --iconWidth : 1.18em;
+
+  /*-------------------
+       Neutral Text
+  --------------------*/
+  --darkTextColor               : rgba(0, 0, 0, 0.85);
+  --mutedTextColor              : rgba(0, 0, 0, 0.6);
+  --lightTextColor              : rgba(0, 0, 0, 0.4);
+  --unselectedTextColor         : rgba(0, 0, 0, 0.4);
+  --hoveredTextColor            : rgba(0, 0, 0, 0.8);
+  --pressedTextColor            : rgba(0, 0, 0, 0.9);
+  --selectedTextColor           : rgba(0, 0, 0, 0.95);
+  --disabledTextColor           : rgba(0, 0, 0, 0.2);
+  --invertedTextColor           : rgba(255, 255, 255, 0.9);
+  --invertedMutedTextColor      : rgba(255, 255, 255, 0.8);
+  --invertedLightTextColor      : rgba(255, 255, 255, 0.7);
+  --invertedUnselectedTextColor : rgba(255, 255, 255, 0.5);
+  --invertedHoveredTextColor    : rgba(255, 255, 255, 1);
+  --invertedPressedTextColor    : rgba(255, 255, 255, 1);
+  --invertedSelectedTextColor   : rgba(255, 255, 255, 1);
+  --invertedDisabledTextColor   : rgba(255, 255, 255, 0.2);
+
+  /*-------------------
+       Brand Colors
+  --------------------*/
+  --facebookColor   : #3B5998;
+  --twitterColor    : #0084B4;
+  --googlePlusColor : #DC4A38;
+  --linkedInColor   : #1F88BE;
+  --youtubeColor    : #CC181E;
+  --instagramColor  : #49769C;
+  --pinterestColor  : #00ACED;
+  --vkColor         : #4D7198;
 
 
-  $mobileBreakpointVar            : var(--mobileBreakpoint);
-  $tabletBreakpointVar            : var(--tabletBreakpoint);
-  $computerBreakpointVar          : var(--computerBreakpoint);
-  $largeMonitorBreakpointVar      : var(--largeMonitorBreakpoint);
-  $widescreenMonitorBreakpointVar : var(--widescreenMonitorBreakpoint);
 
+  /*-------------------
+        Borders
+  --------------------*/
+
+  --circularRadius                : 500rem;
+
+  --borderColor                   : rgba(34, 36, 38, 0.15);
+  --strongBorderColor             : rgba(34, 36, 38, 0.22);
+  --internalBorderColor           : rgba(34, 36, 38, 0.1);
+  --selectedBorderColor           : rgba(34, 36, 38, 0.35);
+  --strongSelectedBorderColor     : rgba(34, 36, 38, 0.5);
+  --disabledBorderColor           : rgba(34, 36, 38, 0.5);
+
+  --solidInternalBorderColor      : #FAFAFA;
+  --solidBorderColor              : #D4D4D5;
+  --solidSelectedBorderColor      : #BCBDBD;
+
+  --whiteBorderColor              : rgba(255, 255, 255, 0.1);
+  --selectedWhiteBorderColor      : rgba(255, 255, 255, 0.8);
+
+  --solidWhiteBorderColor         : #555555;
+  --selectedSolidWhiteBorderColor : #999999;
 
   /*-------------------
       Derived Values
   --------------------*/
+
+  /* Loaders Position Offset */
+  --loaderOffset : calc(-(var(--loaderSize) / 2));
+  --loaderMargin : var(--loaderOffset) 0em 0em var(--loaderOffset);
+
+
   /* Rendered Scrollbar Width */
   --scrollbarWidth: 17px;
+
+  /* Maximum Single Character Glyph Width, aka Capital "W" */
+  --glyphWidth: 1.1em;
+
+
+  /* Used to match floats with text */
+  --lineHeightOffset       : calc((var(--lineHeight) - 1em) / 2);
+  --headerLineHeightOffset : calc(var(--headerLineHeight) - 1em) / 2);
+
+  /* Header Spacing */
+  --headerTopMargin    : calc(2rem - var(--headerLineHeightOffset));
+  --headerBottomMargin : 1rem;
+  --headerMargin       : var(--headerTopMargin) 0em var(--headerBottomMargin);
+
+  /* Minimum Mobile Width */
+  --pageMinWidth       : 320px;
+
+  /* Positive / Negative Dupes */
+  --successBackgroundColor : var(--positiveBackgroundColor);
+  --successColor           : var(--positiveColor);
+  --successBorderColor     : var(--positiveBorderColor);
+  --successHeaderColor     : var(--positiveHeaderColor);
+  --successTextColor       : var(--positiveTextColor);
+  --errorBackgroundColor   : var(--negativeBackgroundColor);
+  --errorColor             : var(--negativeColor);
+  --errorBorderColor       : var(--negativeBorderColor);
+  --errorHeaderColor       : var(--negativeHeaderColor);
+  --errorTextColor         : var(--negativeTextColor);
+
 
   /* Responsive */
   $largestMobileScreenVar : calc(var(--tabletBreakpoint) - 1px);
@@ -103,5 +483,283 @@
   $largestSmallMonitorVar : calc(var(--largeMonitorBreakpoint) - 1px);
   $largestLargeMonitorVar : calc(var(--widescreenMonitorBreakpoint) - 1px);
 
+  /* Columns */
+  --oneWide        : calc(1 / var(--columnCount) * 100%);
+  --twoWide        : calc(2 / var(--columnCount) * 100%);
+  --threeWide      : calc(3 / var(--columnCount) * 100%);
+  --fourWide       : calc(4 / var(--columnCount) * 100%);
+  --fiveWide       : calc(5 / var(--columnCount) * 100%);
+  --sixWide        : calc(6 / var(--columnCount) * 100%);
+  --sevenWide      : calc(7 / var(--columnCount) * 100%);
+  --eightWide      : calc(8 / var(--columnCount) * 100%);
+  --nineWide       : calc(9 / var(--columnCount) * 100%);
+  --tenWide        : calc(10 / var(--columnCount) * 100%);
+  --elevenWide     : calc(11 / var(--columnCount) * 100%);
+  --twelveWide     : calc(12 / var(--columnCount) * 100%);
+  --thirteenWide   : calc(13 / var(--columnCount) * 100%);
+  --fourteenWide   : calc(14 / var(--columnCount) * 100%);
+  --fifteenWide    : calc(15 / var(--columnCount) * 100%);
+  --sixteenWide    : calc(16 / var(--columnCount) * 100%);
+  --oneColumn      : calc(1 / 1 * 100%);
+  --twoColumn      : calc(1 / 2 * 100%);
+  --threeColumn    : calc(1 / 3 * 100%);
+  --fourColumn     : calc(1 / 4 * 100%);
+  --fiveColumn     : calc(1 / 5 * 100%);
+  --sixColumn      : calc(1 / 6 * 100%);
+  --sevenColumn    : calc(1 / 7 * 100%);
+  --eightColumn    : calc(1 / 8 * 100%);
+  --nineColumn     : calc(1 / 9 * 100%);
+  --tenColumn      : calc(1 / 10 * 100%);
+  --elevenColumn   : calc(1 / 11 * 100%);
+  --twelveColumn   : calc(1 / 12 * 100%);
+  --thirteenColumn : calc(1 / 13 * 100%);
+  --fourteenColumn : calc(1 / 14 * 100%);
+  --fifteenColumn  : calc(1 / 15 * 100%);
+  --sixteenColumn  : calc(1 / 16 * 100%);
 
+  /*******************************
+             States
+  *******************************/
+
+  /*-------------------
+        Disabled
+  --------------------*/
+
+  --disabledOpacity: 0.45;
+  --disabledTextColor: rgba(40, 40, 40, 0.3);
+  --invertedDisabledTextColor: rgba(225, 225, 225, 0.3);
+
+  /*-------------------
+          Hover
+  --------------------*/
+
+  /*---  Colors  ---*/
+  --primaryColorHover    : color(var(--primaryColor) lightness(- 5%) saturation(+ 10%));
+  --secondaryColorHover  : color(var(--secondaryColor) lightness(+ 5%) saturation(+ 10%));
+
+  --redHover             : color(var(--red) lightness(- 5%) saturation(+ 10%));
+  --orangeHover          : color(var(--orange) lightness(- 5%) saturation(+ 10%));
+  --yellowHover          : color(var(--yellow) lightness(- 5%) saturation(+ 10%));
+  --oliveHover           : color(var(--olive) lightness(- 5%) saturation(+ 10%));
+  --greenHover           : color(var(--green) lightness(- 5%) saturation(+ 10%));
+  --tealHover            : color(var(--teal) lightness(- 5%) saturation(+ 10%));
+  --blueHover            : color(var(--blue) lightness(- 5%) saturation(+ 10%));
+  --violetHover          : color(var(--violet) lightness(- 5%) saturation(+ 10%));
+  --purpleHover          : color(var(--purple) lightness(- 5%) saturation(+ 10%));
+  --pinkHover            : color(var(--pink) lightness(- 5%) saturation(+ 10%));
+  --brownHover           : color(var(--brown) lightness(- 5%) saturation(+ 10%));
+
+  --lightRedHover        : color(var(--lightRed) lightness(- 5%) saturation(+ 10%));
+  --lightOrangeHover     : color(var(--lightOrange) lightness(- 5%) saturation(+ 10%));
+  --lightYellowHover     : color(var(--lightYellow) lightness(- 5%) saturation(+ 10%));
+  --lightOliveHover      : color(var(--lightOlive) lightness(- 5%) saturation(+ 10%));
+  --lightGreenHover      : color(var(--lightGreen) lightness(- 5%) saturation(+ 10%));
+  --lightTealHover       : color(var(--lightTeal) lightness(- 5%) saturation(+ 10%));
+  --lightBlueHover       : color(var(--lightBlue) lightness(- 5%) saturation(+ 10%));
+  --lightVioletHover     : color(var(--lightViolet) lightness(- 5%) saturation(+ 10%));
+  --lightPurpleHover     : color(var(--lightPurple) lightness(- 5%) saturation(+ 10%));
+  --lightPinkHover       : color(var(--lightPink) lightness(- 5%) saturation(+ 10%));
+  --lightBrownHover      : color(var(--lightBrown) lightness(- 5%) saturation(+ 10%));
+  --lightGreyHover       : color(var(--lightGrey) lightness(- 5%) saturation(+ 10%));
+  --lightBlackHover      : color(var(--fullBlack) lightness(- 5%) saturation(+ 10%));
+
+  /*---  Emotive  ---*/
+  --positiveColorHover   : color(var(--positiveColor) lightness(- 5%) saturation(+ 10%));
+  --negativeColorHover   : color(var(--negativeColor) lightness(- 5%) saturation(+ 10%));
+
+  /*---  Brand   ---*/
+  --facebookHoverColor   : color(var(--facebookColor) lightness(- 5%) saturation(+ 10%));
+  --twitterHoverColor    : color(var(--twitterColor) lightness(- 5%) saturation(+ 10%));
+  --googlePlusHoverColor : color(var(--googlePlusColor) lightness(- 5%) saturation(+ 10%));
+  --linkedInHoverColor   : color(var(--linkedInColor) lightness(- 5%) saturation(+ 10%));
+  --youtubeHoverColor    : color(var(--youtubeColor) lightness(- 5%) saturation(+ 10%));
+  --instagramHoverColor  : color(var(--instagramColor) lightness(- 5%) saturation(+ 10%));
+  --pinterestHoverColor  : color(var(--pinterestColor) lightness(- 5%) saturation(+ 10%));
+  --vkHoverColor         : color(var(--vkColor) lightness(- 5%) saturation(+ 10%));
+
+  /*---  Dark Tones  ---*/
+  --fullBlackHover       : color(var(--fullBlack) lightness(+ 5%));
+  --blackHover           : color(var(--black) lightness(+ 5%));
+  --greyHover            : color(var(--grey) lightness(+ 5%));
+
+  /*---  Light Tones  ---*/
+  --whiteHover           : color(var(--white) lightness(- 5%));
+  --offWhiteHover        : color(var(--offWhite) lightness(- 5%));
+  --darkWhiteHover       : color(var(--darkWhite) lightness(- 5%));
+
+  /*-------------------
+          Focus
+  --------------------*/
+
+  /*---  Colors  ---*/
+  --primaryColorFocus    : color(var(--primaryColor) lightness(- 8%) saturation(+ 20%));
+  --secondaryColorFocus  : color(var(--secondaryColor) lightness(+ 8%) saturation(+ 20%));
+
+  --redFocus             : color(var(--red) lightness(- 8%) saturation(+ 20%));
+  --orangeFocus          : color(var(--orange) lightness(- 8%) saturation(+ 20%));
+  --yellowFocus          : color(var(--yellow) lightness(- 8%) saturation(+ 20%));
+  --oliveFocus           : color(var(--olive) lightness(- 8%) saturation(+ 20%));
+  --greenFocus           : color(var(--green) lightness(- 8%) saturation(+ 20%));
+  --tealFocus            : color(var(--teal) lightness(- 8%) saturation(+ 20%));
+  --blueFocus            : color(var(--blue) lightness(- 8%) saturation(+ 20%));
+  --violetFocus          : color(var(--violet) lightness(- 8%) saturation(+ 20%));
+  --purpleFocus          : color(var(--purple) lightness(- 8%) saturation(+ 20%));
+  --pinkFocus            : color(var(--pink) lightness(- 8%) saturation(+ 20%));
+  --brownFocus           : color(var(--brown) lightness(- 8%) saturation(+ 20%));
+
+  --lightRedFocus        : color(var(--lightRed) lightness(- 8%) saturation(+ 20%));
+  --lightOrangeFocus     : color(var(--lightOrange) lightness(- 8%) saturation(+ 20%));
+  --lightYellowFocus     : color(var(--lightYellow) lightness(- 8%) saturation(+ 20%));
+  --lightOliveFocus      : color(var(--lightOlive) lightness(- 8%) saturation(+ 20%));
+  --lightGreenFocus      : color(var(--lightGreen) lightness(- 8%) saturation(+ 20%));
+  --lightTealFocus       : color(var(--lightTeal) lightness(- 8%) saturation(+ 20%));
+  --lightBlueFocus       : color(var(--lightBlue) lightness(- 8%) saturation(+ 20%));
+  --lightVioletFocus     : color(var(--lightViolet) lightness(- 8%) saturation(+ 20%));
+  --lightPurpleFocus     : color(var(--lightPurple) lightness(- 8%) saturation(+ 20%));
+  --lightPinkFocus       : color(var(--lightPink) lightness(- 8%) saturation(+ 20%));
+  --lightBrownFocus      : color(var(--lightBrown) lightness(- 8%) saturation(+ 20%));
+  --lightGreyFocus       : color(var(--lightGrey) lightness(- 8%) saturation(+ 20%));
+  --lightBlackFocus      : color(var(--fullBlack) lightness(- 8%) saturation(+ 20%));
+
+  /*---  Emotive  ---*/
+  --positiveColorFocus   : color(var(--positiveColor) lightness(- 8%) saturation(+ 20%));
+  --negativeColorFocus   : color(var(--negativeColor) lightness(- 8%) saturation(+ 20%));
+
+  /*---  Brand   ---*/
+  --facebookFocusColor   : color(var(--facebookColor) lightness(- 8%) saturation(+ 20%));
+  --twitterFocusColor    : color(var(--twitterColor) lightness(- 8%) saturation(+ 20%));
+  --googlePlusFocusColor : color(var(--googlePlusColor) lightness(- 8%) saturation(+ 20%));
+  --linkedInFocusColor   : color(var(--linkedInColor) lightness(- 8%) saturation(+ 20%));
+  --youtubeFocusColor    : color(var(--youtubeColor) lightness(- 8%) saturation(+ 20%));
+  --instagramFocusColor  : color(var(--instagramColor) lightness(- 8%) saturation(+ 20%));
+  --pinterestFocusColor  : color(var(--pinterestColor) lightness(- 8%) saturation(+ 20%));
+  --vkFocusColor         : color(var(--vkColor) lightness(- 8%) saturation(+ 20%));
+
+  /*---  Dark Tones  ---*/
+  --fullBlackFocus       : color(var(--fullBlack) lightness(+ 8%));
+  --blackFocus           : color(var(--black) lightness(+ 8%));
+  --greyFocus            : color(var(--grey) lightness(+ 8%));
+
+  /*---  Light Tones  ---*/
+  --whiteFocus           : color(var(--white) lightness(- 8%));
+  --offWhiteFocus        : color(var(--offWhite) lightness(- 8%));
+  --darkWhiteFocus       : color(var(--darkWhite) lightness(- 8%));
+
+
+  /*-------------------
+      Down (:active)
+  --------------------*/
+
+  /*---  Colors  ---*/
+  --primaryColorDown    : color(var(--primaryColor) lightness(- 10%));
+  --secondaryColorDown  : color(var(--secondaryColor) lightness(+ 10%));
+
+  --redDown             : color(var(--red) lightness(- 10%));
+  --orangeDown          : color(var(--orange) lightness(- 10%));
+  --yellowDown          : color(var(--yellow) lightness(- 10%));
+  --oliveDown           : color(var(--olive) lightness(- 10%));
+  --greenDown           : color(var(--green) lightness(- 10%));
+  --tealDown            : color(var(--teal) lightness(- 10%));
+  --blueDown            : color(var(--blue) lightness(- 10%));
+  --violetDown          : color(var(--violet) lightness(- 10%));
+  --purpleDown          : color(var(--purple) lightness(- 10%));
+  --pinkDown            : color(var(--pink) lightness(- 10%));
+  --brownDown           : color(var(--brown) lightness(- 10%));
+
+  --lightRedDown        : color(var(--lightRed) lightness(- 10%));
+  --lightOrangeDown     : color(var(--lightOrange) lightness(- 10%));
+  --lightYellowDown     : color(var(--lightYellow) lightness(- 10%));
+  --lightOliveDown      : color(var(--lightOlive) lightness(- 10%));
+  --lightGreenDown      : color(var(--lightGreen) lightness(- 10%));
+  --lightTealDown       : color(var(--lightTeal) lightness(- 10%));
+  --lightBlueDown       : color(var(--lightBlue) lightness(- 10%));
+  --lightVioletDown     : color(var(--lightViolet) lightness(- 10%));
+  --lightPurpleDown     : color(var(--lightPurple) lightness(- 10%));
+  --lightPinkDown       : color(var(--lightPink) lightness(- 10%));
+  --lightBrownDown      : color(var(--lightBrown) lightness(- 10%));
+  --lightGreyDown       : color(var(--lightGrey) lightness(- 10%));
+  --lightBlackDown      : color(var(--fullBlack) lightness(- 10%));
+
+  /*---  Emotive  ---*/
+  --positiveColorDown   : color(var(--positiveColor) lightness(- 10%));
+  --negativeColorDown   : color(var(--negativeColor) lightness(- 10%));
+
+  /*---  Brand   ---*/
+  --facebookDownColor   : color(var(--facebookColor) lightness(- 10%));
+  --twitterDownColor    : color(var(--twitterColor) lightness(- 10%));
+  --googlePlusDownColor : color(var(--googlePlusColor) lightness(- 10%));
+  --linkedInDownColor   : color(var(--linkedInColor) lightness(- 10%));
+  --youtubeDownColor    : color(var(--youtubeColor) lightness(- 10%));
+  --instagramDownColor  : color(var(--instagramColor) lightness(- 10%));
+  --pinterestDownColor  : color(var(--pinterestColor) lightness(- 10%));
+  --vkDownColor         : color(var(--vkColor) lightness(- 10%));
+
+  /*---  Dark Tones  ---*/
+  --fullBlackDown       : color(var(--fullBlack) lightness(+ 10%));
+  --blackDown           : color(var(--black) lightness(+ 10%));
+  --greyDown            : color(var(--grey) lightness(+ 10%));
+
+  /*---  Light Tones  ---*/
+  --whiteDown           : color(var(--white) lightness(- 10%));
+  --offWhiteDown        : color(var(--offWhite) lightness(- 10%));
+  --darkWhiteDown       : color(var(--darkWhite) lightness(- 10%));
+
+
+  /*-------------------
+         Active
+  --------------------*/
+
+  /*---  Colors  ---*/
+  --primaryColorActive    : color(var(--primaryColor) lightness(- 5%) saturation(+ 15%));
+  --secondaryColorActive  : color(var(--secondaryColor) lightness(+ 5%) saturation(+ 15%));
+
+  --redActive             : color(var(--red) lightness(- 5%) saturation(+ 15%));
+  --orangeActive          : color(var(--orange) lightness(- 5%) saturation(+ 15%));
+  --yellowActive          : color(var(--yellow) lightness(- 5%) saturation(+ 15%));
+  --oliveActive           : color(var(--olive) lightness(- 5%) saturation(+ 15%));
+  --greenActive           : color(var(--green) lightness(- 5%) saturation(+ 15%));
+  --tealActive            : color(var(--teal) lightness(- 5%) saturation(+ 15%));
+  --blueActive            : color(var(--blue) lightness(- 5%) saturation(+ 15%));
+  --violetActive          : color(var(--violet) lightness(- 5%) saturation(+ 15%));
+  --purpleActive          : color(var(--purple) lightness(- 5%) saturation(+ 15%));
+  --pinkActive            : color(var(--pink) lightness(- 5%) saturation(+ 15%));
+  --brownActive           : color(var(--brown) lightness(- 5%) saturation(+ 15%));
+
+  --lightRedActive        : color(var(--lightRed) lightness(- 5%) saturation(+ 15%));
+  --lightOrangeActive     : color(var(--lightOrange) lightness(- 5%) saturation(+ 15%));
+  --lightYellowActive     : color(var(--lightYellow) lightness(- 5%) saturation(+ 15%));
+  --lightOliveActive      : color(var(--lightOlive) lightness(- 5%) saturation(+ 15%));
+  --lightGreenActive      : color(var(--lightGreen) lightness(- 5%) saturation(+ 15%));
+  --lightTealActive       : color(var(--lightTeal) lightness(- 5%) saturation(+ 15%));
+  --lightBlueActive       : color(var(--lightBlue) lightness(- 5%) saturation(+ 15%));
+  --lightVioletActive     : color(var(--lightViolet) lightness(- 5%) saturation(+ 15%));
+  --lightPurpleActive     : color(var(--lightPurple) lightness(- 5%) saturation(+ 15%));
+  --lightPinkActive       : color(var(--lightPink) lightness(- 5%) saturation(+ 15%));
+  --lightBrownActive      : color(var(--lightBrown) lightness(- 5%) saturation(+ 15%));
+  --lightGreyActive       : color(var(--lightGrey) lightness(- 5%) saturation(+ 15%));
+  --lightBlackActive      : color(var(--fullBlack) lightness(- 5%) saturation(+ 15%));
+
+  /*---  Emotive  ---*/
+  --positiveColorActive   : color(var(--positiveColor) lightness(- 5%) saturation(+ 15%));
+  --negativeColorActive   : color(var(--negativeColor) lightness(- 5%) saturation(+ 15%));
+
+  /*---  Brand   ---*/
+  --facebookActiveColor   : color(var(--facebookColor) lightness(- 5%) saturation(+ 15%));
+  --twitterActiveColor    : color(var(--twitterColor) lightness(- 5%) saturation(+ 15%));
+  --googlePlusActiveColor : color(var(--googlePlusColor) lightness(- 5%) saturation(+ 15%));
+  --linkedInActiveColor   : color(var(--linkedInColor) lightness(- 5%) saturation(+ 15%));
+  --youtubeActiveColor    : color(var(--youtubeColor) lightness(- 5%) saturation(+ 15%));
+  --instagramActiveColor  : color(var(--instagramColor) lightness(- 5%) saturation(+ 15%));
+  --pinterestActiveColor  : color(var(--pinterestColor) lightness(- 5%) saturation(+ 15%));
+  --vkActiveColor         : color(var(--vkColor) lightness(- 5%) saturation(+ 15%));
+
+  /*---  Dark Tones  ---*/
+  --fullBlackActive       : color(var(--fullBlack) lightness(- 5%));
+  --blackActive           : color(var(--black) lightness(- 5%));
+  --greyActive            : color(var(--grey) lightness(- 5%));
+
+  /*---  Light Tones  ---*/
+  --whiteActive           : color(var(--white) lightness(- 5%));
+  --offWhiteActive        : color(var(--offWhite) lightness(- 5%));
+  --darkWhiteActive       : color(var(--darkWhite) lightness(- 5%));
 }
