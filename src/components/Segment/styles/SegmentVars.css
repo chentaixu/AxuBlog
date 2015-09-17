@@ -79,8 +79,8 @@
   /* Attached */
   --attachedTopOffset: 0px;
   --attachedBottomOffset: 0px;
-  --attachedHorizontalOffset: calc((-1)*var(--borderWidth));
-  --attachedWidth: calc(100% - (var(--attachedHorizontalOffset) * 2));
+  --attachedHorizontalOffset: calc(-var(--borderWidth));
+  --attachedWidth: calc(100% + (var(--attachedHorizontalOffset)*(-2)));
   --attachedBoxShadow: none;
   --attachedBorder: var(--borderWidth) solid var(--solidBorderColor);
   --attachedBottomBoxShadow: var(--boxShadow), var(--attachedBoxShadow);

@@ -1,12 +1,8 @@
 @import "./SegmentVars.css";
 
-/*******************************
-            Segment
-*******************************/
 
-
-
-@keyframes segment-spin {
+/* Animations */
+@keyframes Segment-spin {
   from {
     transform: rotate(0deg);
   }
@@ -15,7 +11,7 @@
   }
 }
 
-.segment {
+.Segment {
   position: relative;
   background: var(--background);
   box-shadow: var(--boxShadow);
@@ -25,13 +21,19 @@
   border: var(--border);
 
   &:first-child {
-    margin-top: 0em;
+     margin-top: 0em;
   }
   &:last-child {
-    margin-bottom: 0em;
+     margin-bottom: 0em;
   }
 
-  &.vertical {
+
+
+  /* Modifiers */
+
+
+  /* vertical type */
+  &.&--vertical {
     margin: 0em;
     padding-left: 0em;
     padding-right: 0em;
@@ -47,15 +49,7 @@
     }
   }
 
-  /*******************************
-               Types
-  *******************************/
-
-  /*-------------------
-          Piled
-  --------------------*/
-
-  &.piled {
+  &.&--piled {
     margin: var(--piledMargin) 0em;
     box-shadow: var(--piledBoxShadow);
     z-index: var(--piledZIndex);
@@ -96,16 +90,15 @@
       z-index: -2;
     }
 
-    /* Piled Attached */
-    &.attached {
-      &ToTop {
+    &.display {
+      &-is-topAttached {
         margin-top: var(--piledMargin);
         margin-bottom: 0em;
         &:first-child {
           margin-top: 0em;
         }
       }
-      &ToBottom {
+      &-is-bottomAttached {
         margin-top: 0em;
         margin-bottom: var(--piledMargin);
         &:last-child {
@@ -115,15 +108,8 @@
     }
   }
 
-
-
-
-
-  /*-------------------
-         Stacked
-  --------------------*/
-
-  &.stacked {
+  /* stacked type */
+  &.&--stacked {
     padding-bottom: var(--stackedPadding);
     &::before {
       content: '';
@@ -154,14 +140,15 @@
       visibility: visible;
     }
 
-    &.tall {
-      &::before {
+    /* depth group */
+    &.depth {
+      &-is-tall::before {
         display: block;
         bottom: 0px;
       }
     }
 
-    &.inverted {
+    &.theme-is-inverted {
       &::before {
         background-color: var(--subtleTransparentBlack);
         border-top: 1px solid var(--selectedBorderColor);
@@ -175,31 +162,8 @@
 
   }
 
-
-  /*-------------------
-         Padded
-  --------------------*/
-  &.padded {
-    padding: var(--paddedSegmentPadding);
-  }
-
-  &.veryPadded {
-    padding: var(--veryPaddedSegmentPadding);
-  }
-
-  /*-------------------
-         Compact
-  --------------------*/
-
-  &.compact {
-    display: table;
-  }
-
-  /*-------------------
-         Circular
-  --------------------*/
-
-  &.circular {
+  /* circular type */
+  &.&--circular {
     display: table-cell;
     padding: var(--circularPadding);
     text-align: center;
@@ -207,369 +171,360 @@
     border-radius: 500em;
   }
 
-  /*-------------------
-         Raised
-  --------------------*/
+  /* basic type */
 
-  &.raised {
-    box-shadow: var(--raisedBoxShadow);
-  }
-
-
-  /*******************************
-              States
-  *******************************/
-
-  /*--------------
-      Disabled
-  ---------------*/
-
-  &.disabled {
-    opacity: var(--disabledOpacity);
-    color: var(--disabledTextColor);
-  }
-
-  /*--------------
-      Loading
-  ---------------*/
-
-  &.loading {
-    position: relative;
-    cursor: default;
-    point-events: none;
-    text-shadow: none;
-    color: transparent;
-    transition: all 0s linear;
-    &::before {
-      position: absolute;
-      content: '';
-      top: 0%;
-      left: 0%;
-      background: var(--loaderDimmerColor);
-      width: 100%;
-      height: 100%;
-      border-radius: var(--borderRadius);
-      z-index: var(--loaderDimmerZIndex);
-    }
-    &::after {
-      position: absolute;
-      content: '';
-      top: 50%;
-      left: 50%;
-
-      margin: var(--loaderMargin);
-      width: var(--loaderSize);
-      height: var(--loaderSize);
-
-      animation: segment-spin var(--loaderSpeed) linear;
-      animation-iteration-count: infinite;
-
-      border-radius: var(--circularRadius);
-
-      border-color: var(--loaderLineColor) var(--loaderFillColor) var(--loaderFillColor) var(--loaderFillColor);
-      border-style: solid;
-      border-width: var(--loaderLineWidth);
-
-      box-shadow: 0px 0px 0px 1px transparent;
-      visibility: visible;
-      z-index: var(--loaderLineZIndex);
-    }
-  }
-
-
-
-
-  /*******************************
-             Variations
-  *******************************/
-
-
-  /*-------------------
-         Basic
-  --------------------*/
-
-  &.basic {
+  &.&--basic {
     background: var(--basicBackground);
     box-shadow: var(--basicBoxShadow);
     border: var(--basicBorder);
     border-radius: var(--basicBorderRadius);
   }
 
-  /*-------------------
-         Clearing
-  --------------------*/
+  /* clearing type */
 
-
-  &.clearing {
+  &.&--clearing {
     &::after {
-      content: ".";
-      display: block;
-      height: 0;
-      clear: both;
-      visibility: hidden;
-    }
+       content: ".";
+       display: block;
+       height: 0;
+       clear: both;
+       visibility: hidden;
+     }
   }
 
-  /*-------------------
-         Colors
-  --------------------*/
 
-  /* Red */
+  /* State Groups */
 
-  &.red {
-    &:not(.inverted) {
-      border-top: var(--coloredBorderSize) solid var(--red);
+  /* padding group */
+  &.padding {
+    &-is-padded {
+      padding: var(--paddedSegmentPadding);
     }
-    &.inverted {
-      background-color: var(--red);
-      color: var(--white);
-    }
-  }
 
-  /* Orange */
-  &.orange {
-    &:not(.inverted) {
-      border-top: var(--coloredBorderSize) solid var(--orange);
-    }
-    &.inverted {
-      background-color: var(--orange);
-      color: var(--white);
-    }
-  }
-
-  /* Yellow */
-  &.yellow {
-    &:not(.inverted) {
-      border-top: var(--coloredBorderSize) solid var(--yellow);
-    }
-    &.inverted {
-      background-color: var(--yellow);
-      color: var(--white);
-    }
-  }
-
-  /* Olive */
-  &.olive {
-    &:not(.inverted) {
-      border-top: var(--coloredBorderSize) solid var(--olive);
-    }
-    &.inverted {
-      background-color: var(--olive);
-      color: var(--white);
-    }
-  }
-
-  /* Green */
-  &.green {
-    &:not(.inverted) {
-      border-top: var(--coloredBorderSize) solid var(--green);
-    }
-    &.inverted {
-      background-color: var(--green);
-      color: var(--white);
+    &-is-veryPadded {
+      padding: var(--veryPaddedSegmentPadding);
     }
   }
 
 
-  /* Teal */
-  &.teal {
-    &:not(.inverted) {
-      border-top: var(--coloredBorderSize) solid var(--teal);
+  /* display group */
+
+  &.display {
+    &-is-compact {
+      display: table;
     }
-    &.inverted {
-      background-color: var(--teal);
-      color: var(--white);
+    &-is-singleAttached {
+      top: 0px;
+      bottom: 0px;
+      border-radius: 0px;
+      margin: 0em var(--attachedHorizontalOffset);
+      width: var(--attachedWidth);
+      max-width: var(--attachedWidth);
+      box-shadow: var(--attachedBoxShadow);
+      border: var(--attachedBorder);
+    }
+    &-is-middleAttached {
+      top: 0px;
+      bottom: 0px;
+      border-radius: 0px;
+      margin: 0em var(--attachedHorizontalOffset);
+      width: var(--attachedWidth);
+      max-width: var(--attachedWidth);
+      box-shadow: var(--attachedBoxShadow);
+      border: var(--attachedBorder);
+      border-top: none;
+    }
+    &-is-topAttached {
+      top: var(--attachedTopOffset);
+      bottom: 0px;
+      margin-bottom: 0em;
+      margin-right: var(--attachedHorizontalOffset);
+      margin-top: var(--verticalMargin);
+      border-radius: var(--borderRadius) var(--borderRadius) 0em 0em;         width: var(--attachedWidth);
+      max-width: var(--attachedWidth);
+      box-shadow: var(--attachedBoxShadow);
+      border: var(--attachedBorder);
+      &:first-child {
+        margin-top: 0em;
+      }
+    }
+    &-is-bottomAttached {
+      top: var(--attachedBottomOffset);
+      bottom: 0px;
+      margin-top: 0em;
+      margin-bottom: var(--verticalMargin);
+      margin-right: var(--attachedHorizontalOffset);
+      width: var(--attachedWidth);
+      max-width: var(--attachedWidth);
+      box-shadow: var(--attachedBottomBoxShadow);
+      border-radius: 0em 0em var(--borderRadius) var(--borderRadius);
+      border: var(--attachedBorder);
+      border-top: none;
+      &:last-child {
+        margin-bottom: 0em;
+      }
     }
   }
 
-  /* Blue */
-  &.blue {
-    &:not(.inverted) {
-      border-top: var(--coloredBorderSize) solid var(--blue);
-    }
-    &.inverted {
-      background-color: var(--blue);
-      color: var(--white);
+  /* shadow group */
+
+  &.shadow {
+    &-is-raised {
+      box-shadow: var(--raisedBoxShadow);
     }
   }
 
-  /* Violet */
-  &.violet {
-    &:not(.inverted) {
-      border-top: var(--coloredBorderSize) solid var(--violet);
+  /* content group */
+  &.content {
+    &-is-disabled {
+      opacity: var(--disabledOpacity);
+      color: var(--disabledTextColor);
     }
-    &.inverted {
-      background-color: var(--violet);
-      color: var(--white);
-    }
-  }
-
-  /* Purple */
-  &.purple {
-    &:not(.inverted) {
-      border-top: var(--coloredBorderSize) solid var(--purple);
-    }
-    &.inverted {
-      background-color: var(--purple);
-      color: var(--white);
-    }
-  }
-
-  /* Pink */
-  &.pink {
-    &:not(.inverted) {
-      border-top: var(--coloredBorderSize) solid var(--pink);
-    }
-    &.inverted {
-      background-color: var(--pink);
-      color: var(--white);
-    }
-  }
-
-  /* Brown */
-  &.brown {
-    &:not(.inverted) {
-      border-top: var(--coloredBorderSize) solid var(--brown);
-    }
-    &.inverted {
-      background-color: var(--brown);
-      color: var(--white);
-    }
-  }
-
-  /* Grey */
-  &.grey {
-    &:not(.inverted) {
-      border-top: var(--coloredBorderSize) solid var(--grey);
-    }
-    &.inverted {
-      background-color: var(--grey);
-      color: var(--white);
+    &-is-loading {
+      position: relative;
+      cursor: default;
+      point-events: none;
+      text-shadow: none;
+      color: transparent;
+      transition: all 0s linear;
+      &::before {
+        position: absolute;
+        content: '';
+        top: 0%;
+        left: 0%;
+        background: var(--loaderDimmerColor);
+        width: 100%;
+        height: 100%;
+        border-radius: var(--borderRadius);
+        z-index: var(--loaderDimmerZIndex);
+      }
+      &::after {
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: 50%;
+        margin: var(--loaderMargin);
+        width: var(--loaderSize);
+        height: var(--loaderSize);
+        animation: Segment-spin var(--loaderSpeed) linear;
+        animation-iteration-count: infinite;
+        border-radius: var(--circularRadius);
+        border-color: var(--loaderLineColor) var(--loaderFillColor) var(--loaderFillColor) var(--loaderFillColor);
+        border-style: solid;
+        border-width: var(--loaderLineWidth);
+        box-shadow: 0px 0px 0px 1px transparent;
+        visibility: visible;
+        z-index: var(--loaderLineZIndex);
+      }
     }
   }
 
-  /* Black */
-  &.black {
-    &:not(.inverted) {
-      border-top: var(--coloredBorderSize) solid var(--black);
+
+  /* color group */
+
+  &.color {
+    &-is-red {
+      &:not(.theme-is-inverted) {
+        border-top: var(--coloredBorderSize) solid var(--red);
+      }
+      &.theme-is-inverted {
+        background-color: var(--red);
+        color: var(--white);
+      }
     }
-    &.inverted {
-      background-color: var(--black);
-      color: var(--white);
+
+    &-is-orange {
+      &:not(.theme-is-inverted) {
+        border-top: var(--coloredBorderSize) solid var(--orange);
+      }
+      &.theme-is-inverted {
+        background-color: var(--orange);
+        color: var(--white);
+      }
+    }
+
+    &-is-yellow {
+      &:not(.theme-is-inverted) {
+        border-top: var(--coloredBorderSize) solid var(--yellow);
+      }
+      &.theme-is-inverted {
+        background-color: var(--yellow);
+        color: var(--white);
+      }
+    }
+
+    &-is-olive {
+      &:not(.theme-is-inverted) {
+        border-top: var(--coloredBorderSize) solid var(--olive);
+      }
+      &.theme-is-inverted {
+        background-color: var(--olive);
+        color: var(--white);
+      }
+    }
+
+    &-is-green {
+      &:not(.theme-is-inverted) {
+        border-top: var(--coloredBorderSize) solid var(--green);
+      }
+      &.theme-is-inverted {
+        background-color: var(--green);
+        color: var(--white);
+      }
+    }
+
+    &-is-teal {
+      &:not(.theme-is-inverted) {
+        border-top: var(--coloredBorderSize) solid var(--teal);
+      }
+      &.theme-is-inverted {
+        background-color: var(--teal);
+        color: var(--white);
+      }
+    }
+
+    &-is-blue {
+      &:not(.theme-is-inverted) {
+        border-top: var(--coloredBorderSize) solid var(--blue);
+      }
+      &.theme-is-inverted {
+        background-color: var(--blue);
+        color: var(--white);
+      }
+    }
+
+    &-is-violet {
+      &:not(.theme-is-inverted) {
+        border-top: var(--coloredBorderSize) solid var(--violet);
+      }
+      &.theme-is-inverted {
+        background-color: var(--violet);
+        color: var(--white);
+      }
+    }
+
+    &-is-purple {
+      &:not(.theme-is-inverted) {
+        border-top: var(--coloredBorderSize) solid var(--purple);
+      }
+      &..theme-is-inverted {
+        background-color: var(--purple);
+        color: var(--white);
+      }
+    }
+
+    &-is-pink {
+      &:not(.theme-is-inverted) {
+        border-top: var(--coloredBorderSize) solid var(--pink);
+      }
+      &.theme-is-inverted {
+        background-color: var(--pink);
+        color: var(--white);
+      }
+    }
+
+    &-is-brown {
+      &:not(.theme-is-inverted) {
+        border-top: var(--coloredBorderSize) solid var(--brown);
+      }
+      &.theme-is-inverted {
+        background-color: var(--brown);
+        color: var(--white);
+      }
+    }
+
+    &-is-grey {
+      &:not(.theme-is-inverted) {
+        border-top: var(--coloredBorderSize) solid var(--grey);
+      }
+      &.theme-is-inverted {
+        background-color: var(--grey);
+        color: var(--white);
+      }
+    }
+
+    &-is-black {
+      &:not(.theme-is-inverted) {
+        border-top: var(--coloredBorderSize) solid var(--black);
+      }
+      &.theme-is-inverted {
+        background-color: var(--black);
+        color: var(--white);
+      }
     }
   }
 
-  /*-------------------
-         Aligned
-  --------------------*/
+  /* theme group */
+  &.theme {
+    &.-is-inverted {
+      border: none;
+      box-shadow: none;
+      background: var(--invertedBackground);
+      color: var(--invertedTextColor);
+      &.emphasis-is-primary {
+        background: var(--invertedBackground);
+        color: var(--invertedTextColor);
+      }
+      &.display-is-singleAttached {
+        border-color: var(--solidWhiteBorderColor);
+      }
+      &.display-is-middleAttached {
+        border-color: var(--solidWhiteBorderColor);
+      }
+      &.display-is-bottomAttached {
+        border-color: var(--solidWhiteBorderColor);
+      }
+      &.display-is-topAttached {
+        border-color: var(--solidWhiteBorderColor);
+      }
+    }
+  }
 
-  &.aligned {
-    &ToLeft {
+
+  /* alignment group */
+
+  &.alignment {
+    &-is-toLeft {
       text-align: left;
     }
-    &ToRight {
+    &-is-toRight {
       text-align: right;
     }
-    &ToCenter {
+    &-toCenter {
       text-align: center;
     }
   }
 
-  /*-------------------
-         Floated
-  --------------------*/
-  &.floated{
-    &ToLeft {
+  /* float group */
+  &.float {
+    &-is-toLeft {
       float: left;
       margin-right: var(--floatedDistance);
     }
-    &ToRight {
+    &-toRight {
       float: right;
       margin-left: var(--floatedDistance);
     }
   }
 
-  /*-------------------
-        Inverted
-  --------------------*/
-  &.inverted {
-    border: none;
-    box-shadow: none;
-    background: var(--invertedBackground);
-    color: var(--invertedTextColor);
-    &.primary {
-      background: var(--invertedBackground);
-      color: var(--invertedTextColor);
-    }
-    &.attached {
-      border-color: var(--solidWhiteBorderColor);
-    }
-  }
-
-  /*-------------------
-       Emphasis
-  --------------------*/
-
-  /* Secondary */
-  &.secondary {
-    background: var(--secondaryBackground);
-    color: var(--secondaryColor);
-    &.inverted {
-      background: var(--secondaryInvertedBackground);
-      color: var(--secondaryInvertedColor);
-    }
-  }
-
-
-  /* Tertiary */
-  &.tertiary {
-    background: var(--tertiaryBackground);
-    color: var(--tertiaryColor);
-    &.inverted {
-      background: var(--tertiaryInvertedBackground);
-      color: var(--tertiaryInvertedColor);
-    }
-  }
-
-  /*-------------------
-        Attached
-  --------------------*/
-
-  /* Middle */
-  &.attached {
-    top: 0px;
-    bottom: 0px;
-    border-radius: 0px;
-    margin: 0em var(--attachedHorizontalOffset);
-    width: var(--attachedWidth);
-    max-width: var(--attachedWidth);
-    box-shadow: var(--attachedBoxShadow);
-    border: var(--attachedBorder);
-    &ToTop {
-      bottom: 0px;
-      margin-bottom: 0em;
-      top: var(--attachedTopOffset);
-      margin-top: var(--verticalMargin);
-      border-radius: var(--borderRadius) var(--borderRadius) 0em 0em;
-      &:first-child {
-        margin-top: 0em;
+  /* emphasis group */
+  &.emphasis {
+    &-is-secondary {
+      background: var(--secondaryBackground);
+      color: var(--secondaryColor);
+      &.theme-is-inverted {
+        background: var(--secondaryInvertedBackground);
+        color: var(--secondaryInvertedColor);
       }
     }
-    &ToBottom {
-      bottom: 0px;
-      margin-top: 0em;
-      top: var(--attachedBottomOffset);
-      margin-bottom: var(--verticalMargin);
-      box-shadow: var(--attachedBottomBoxShadow);
-      border-radius: 0em 0em var(--borderRadius) var(--borderRadius);
-      &:last-child {
-        margin-bottom: 0em;
+    &-is-tertiary {
+      background: var(--tertiaryBackground);
+      color: var(--tertiaryColor);
+      &.theme-is-inverted {
+        background: var(--tertiaryInvertedBackground);
+        color: var(--tertiaryInvertedColor);
       }
     }
-    &AsFollower {
-      border-top: none;
-    }
-
   }
 
 }

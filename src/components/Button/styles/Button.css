@@ -1,0 +1,8 @@
+@import "./ButtonVars.css";
+
+.Button {
+
+  &.think-is-wtf {
+     color: green;
+  }
+}

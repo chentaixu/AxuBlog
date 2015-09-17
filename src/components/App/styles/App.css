@@ -1,1 +1,12 @@
+@import '../../../../node_modules/normalize.css/normalize.css';
 @import './AppVars.css';
+
+/* Border-Box */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+}

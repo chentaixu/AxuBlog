@@ -51,6 +51,12 @@
   --h4 : 1.071rem;
   --h5 : 1rem;
 
+  --relativeH1 : 2em;
+  --relativeH2 : 1.714em;
+  --relativeH3 : 1.28em;
+  --relativeH4 : 1.071em;
+  --relativeH5 : 1em;
+
   /*--------------
      Form Input
   ---------------*/

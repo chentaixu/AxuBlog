@@ -1,9 +1,7 @@
-/*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
-
 import React, { PropTypes, Component } from 'react';
-import AppStyle from './styles/App.css';
 import withContext from '../../decorators/withContext';
 import withStyles from '../../decorators/withStyles';
+import AppStyle from './styles/App.css';
 
 let name = 'App';
 let styles = {AppStyle};
@@ -20,7 +18,6 @@ class App extends Component {
   render() {
     return !this.props.error ? (
       <div>
-        <h1>I am dumb</h1>
         {this.props.children}
       </div>
     ) : this.props.children;

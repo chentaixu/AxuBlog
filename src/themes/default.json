@@ -19,6 +19,10 @@
     "default":"SegmentStyle",
     "variant":{}
   },
+  "Button": {
+    "default":"ButtonStyle",
+    "variant":{}
+  },
   "Container":{
     "default":"ContainerStyle",
     "variant":{}

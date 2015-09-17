@@ -9,13 +9,18 @@ let styles = {SegmentStyle};
 class Segment extends Component {
 
   static propTypes = {
-    uiString: PropTypes.string.isRequired
+    uiType: PropTypes.string,
+    uiInitialStates: PropTypes.instanceOf(Map),
+    getUiClassName: PropTypes.func.isRequired
   };
 
+  state = {
+    uiStates: this.props.uiInitialStates?this.props.uiInitialStates:new Map()
+  };
 
   render(){
     return (
-      <div className={this.props.uiString}>
+      <div className={this.props.getUiClassName(this.props.uiType,this.state.uiStates)}>
         {this.props.children}
       </div>
     );

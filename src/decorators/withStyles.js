@@ -10,28 +10,33 @@ let VARIANT_TYPE='variant';
 
 const getThemeStyle = (name, cssTheme, variant) => !variant? cssTheme[name][DEFAULT_TYPE]:cssTheme[name][VARIANT_TYPE][variant];
 
-const getUiAttributes = (attrs, style) => {
-  let uiString = '';
-  if(!(attrs instanceof Array)) return uiString;
-  attrs.map((attr)=>{
-    let localAttr = style.locals[attr];
-    localAttr? (uiString=uiString+localAttr+' '):(uiString=uiString+attr+' ');
-  });
-  return uiString.trim();
+const getUiClassNameMapping = (style, uiName) => (uiType, uiStates) => {
+  let localUiName = style.locals[uiName]?style.locals[uiName]:'';
+  let localUiType = style.locals[uiName+'--'+uiType]?style.locals[uiName+'--'+uiType]:'';
+  let localUiStates = '';
+  for (let [stateType,stateVal] of uiStates) {
+    if(style.locals[stateType+'-is-'+stateVal]) {
+      localUiStates = localUiStates + style.locals[stateType + '-is-' + stateVal] + ' ';
+    }
+  }
+  return (localUiName+' '+localUiType+' '+localUiStates).trim();
 };
+
 
 function withStyles(name, styles) {
   return (ComposedComponent) => class WithStyles extends Component {
 
     static propTypes = {
-      variant: PropTypes.string,
-      uiList: PropTypes.array
-
+      uiVariant: PropTypes.string
     };
 
     static contextTypes = {
       onInsertCss: PropTypes.func.isRequired,
       cssTheme: PropTypes.object.isRequired
+    };
+
+    state = {
+      themeStyle: ''
     };
 
     constructor() {
@@ -68,17 +73,18 @@ function withStyles(name, styles) {
     }
 
     componentWillMount() {
-      this.themeStyle =  getThemeStyle(name, this.context.cssTheme, this.props.variant);
+      let themeStyle = getThemeStyle(name,this.context.cssTheme,this.props.uiVariant);
+      this.setState({themeStyle});
       if (canUseDOM) {
-        invariant(styles[this.themeStyle].use, `The style-loader must be configured with reference-counted API.`);
-        styles[this.themeStyle].use();
+        invariant(styles[themeStyle].use, `The style-loader must be configured with reference-counted API.`);
+        styles[themeStyle].use();
       } else {
-        this.context.onInsertCss(styles[this.themeStyle].toString());
+        this.context.onInsertCss(styles[themeStyle].toString());
       }
     }
 
     componentWillUnmount() {
-      styles[this.themeStyle].unuse();
+      styles[this.state.themeStyle].unuse();
       if (this.styleId) {
         this.refCount--;
         if (this.refCount < 1) {
@@ -90,11 +96,19 @@ function withStyles(name, styles) {
       }
     }
 
+    componentWillReceiveProps(nextProps) {
+      console.log(this.context);
+      if(nextProps.uiVariant!==this.props.uiVariant){
+        this.setState({themeStyle: getThemeStyle(name, this.context.cssTheme, this.props.uiVariant)});
+      }
+    }
+
     render() {
-      let styleObj = styles[this.themeStyle];
-      let {uiList, ...other} = this.props;
-      let uiStringVal = getUiAttributes(uiList,styleObj);
-      return <ComposedComponent {...other} uiString={uiStringVal}/>;
+      let uiStyle = styles[this.state.themeStyle];
+      let { uiVariant, ...other} = this.props;
+      let getUiClassName = getUiClassNameMapping(uiStyle, name);
+
+      return <ComposedComponent {...other} getUiClassName = {getUiClassName} />;
     }
 
   };

@@ -5,6 +5,7 @@ import ContentPageStyle from './styles/ContentPage.css';
 import withStyles from '../../decorators/withStyles';
 import Container from '../Container';
 import Segment from '../Segment';
+import Button from '../Button';
 
 let name = 'ContentPage';
 let styles = {ContentPageStyle};
@@ -26,14 +27,15 @@ class ContentPage extends Component {
     this.context.onSetTitle(this.props.title);
     return (
       <div>
-        <Container uiList={['container','text']}>
-          <Segment uiList={['segment','red']}>
+          <Container uiType={'text'} uiInitialStates={new Map([['alignment','toRight']])}>
+            <Segment uiType={'stacked'} uiInitialStates={new Map([['color','green']])}>
           {
             this.props.path === '/' ? null : <h1>{this.props.title}</h1>
           }
           <div dangerouslySetInnerHTML={{__html: this.props.content || ''}} />
-          </Segment>
-        </Container>
+              <Button> BBB </Button>
+              </Segment>
+          </Container>
       </div>
     );
   }

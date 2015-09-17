@@ -1,12 +1,11 @@
 @import "./ContainerVars.css";
 
-/*******************************
-            Container
-*******************************/
 
-.container {
+.Container {
   display: block;
   max-width: var(--maxWidth);
+
+  /* Responsive layouts */
 
   /* Mobile */
   @custom-media --mobile-viewport only screen and max-width:$largestMobileScreenVar;
@@ -47,30 +46,32 @@
   }
 
 
-  /* Types */
-  &.text{
+  /* Modifiers */
+  &.&--text{
     font-family: var(--textFontFamily);
     max-width: var(--textWidth);
     line-height: var(--textLineHeight);
     font-size: var(--textSize);
   }
 
-  &.fluid{
+  &.&--fluid{
     width: 100%;
   }
 
+  /* State Groups */
 
-  &.aligned {
-    &ToLeft {
+  /* alignment group */
+  &.alignment {
+    &-is-toLeft {
       text-align: left;
     }
-    &ToRight {
+    &-is-toRight {
       text-align: right;
     }
-    &ToCenter {
+    &-is-toCenter {
       text-align: center;
     }
-    &ToJustified {
+    &-is-toJustified {
       text-align: justify;
       hyphens: auto;
     }

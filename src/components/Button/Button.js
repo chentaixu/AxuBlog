@@ -1,12 +1,17 @@
 import React, { PropTypes, Component } from 'react';
-import ContainerStyle from './styles/Container.css';
+import withContext from '../../decorators/withContext';
 import withStyles from '../../decorators/withStyles';
+import ButtonStyle from './styles/Button.css';
 
-let name = 'Container';
-let styles = {ContainerStyle};
+let name = 'Button';
+let styles = {ButtonStyle};
 
 @withStyles(name,styles)
-class Container extends Component {
+class Button extends Component {
+
+  handleMouseOver = (event) => {
+    this.setState({uiStates:this.state.uiStates.set('think','wtf')});
+  };
 
   static propTypes = {
     uiType: PropTypes.string,
@@ -18,15 +23,13 @@ class Container extends Component {
     uiStates: this.props.uiInitialStates?this.props.uiInitialStates:new Map()
   };
 
-
   render(){
     return (
-      <div className={this.props.getUiClassName(this.props.uiType,this.state.uiStates)}>
+      <div className={this.props.getUiClassName(this.props.uiType,this.state.uiStates)}  onMouseOver={this.handleMouseOver}>
         {this.props.children}
       </div>
     );
   }
-
 }
 
-export default Container;
+export default Button;
