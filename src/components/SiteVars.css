@@ -17,7 +17,7 @@
   --------------------*/
 
   font-size: 14px;
-  --rootFontSize: 14px;
+  --rootFontSize: 14;
 
   /*-------------------
       Border Radius
@@ -446,9 +446,6 @@
       Derived Values
   --------------------*/
 
-  /* Loaders Position Offset */
-  --loaderOffset : calc(-(var(--loaderSize) / 2));
-  --loaderMargin : var(--loaderOffset) 0em 0em var(--loaderOffset);
 
 
   /* Rendered Scrollbar Width */

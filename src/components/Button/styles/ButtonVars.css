@@ -1,1 +1,331 @@
 @import "../../SiteVars.css";
+
+:root {
+  /*-------------------
+         Element
+  --------------------*/
+
+  /* Button */
+  --verticalMargin: 0em;
+  --horizontalMargin: 0.25em;
+  --backgroundColor: #E0E1E2;
+  --backgroundImage: none;
+  --background:  var(--backgroundColor) var(--backgroundImage);
+  --lineHeight: 1em;
+
+  /* Button defaults to using same height as input globally */
+  --verticalPadding:   var(--inputVerticalPadding);
+  --horizontalPadding: 1.5em;
+
+  /* Text */
+  --textTransform: none;
+  --tapColor: transparent;
+  --fontFamily:   var(--pageFont);
+  --fontWeight: bold;
+  --textColor: rgba(0, 0, 0, 0.6);
+  --textShadow: none;
+  --invertedTextShadow:  var(--textShadow);
+  --borderRadius:   var(--defaultBorderRadius);
+  --verticalAlign: baseline;
+
+  /* Internal Shadow */
+  --shadowDistance: 0em;
+  --shadowOffset: calc(var(--shadowDistance) / 2);
+  --shadowBoxShadow: 0px -  var(--shadowDistance) 0px 0px   var(--borderColor) inset;
+
+  /* Box Shadow */
+  --borderBoxShadowColor: transparent;
+  --borderBoxShadowWidth: 1px;
+  --borderBoxShadow: 0px 0px 0px var(--borderBoxShadowWidth) var(--borderBoxShadowColor) inset;
+  --boxShadow: var(--borderBoxShadow), var(--shadowBoxShadow);
+
+  /* Icon */
+  --iconHeight:   var(--relativeTiny);
+  --iconOpacity: 0.8;
+  --iconDistance:   var(--relative6px);
+  --iconColor: '';
+  --iconTransition: opacity var(--defaultDuration) var(--defaultEasing);
+  --iconVerticalAlign: '';
+
+  --iconMargin: 0em   var(--iconDistance) 0em -(var(--iconDistance)/ 2);
+  --rightIconMargin: 0em -(var(--iconDistance)/ 2) 0em var(--iconDistance);
+
+  /* Loader */
+  --invertedLoaderFillColor: rgba(0, 0, 0, 0.15);
+
+  --transition:
+  opacity var(--defaultDuration) var(--defaultEasing),
+  background-color var(--defaultDuration) var(--defaultEasing),
+  color var(--defaultDuration) var(--defaultEasing),
+  box-shadow var(--defaultDuration) var(--defaultEasing),
+  background var(--defaultDuration) var(--defaultEasing);
+  /*
+    var(--willChange): box-shadow, transform, opacity, color, background;
+  */
+  --willChange: '';
+
+  /*-------------------
+          Group
+  --------------------*/
+
+  --groupBoxShadow: none;
+  --groupButtonBoxShadow: var(--boxShadow);
+  --verticalBoxShadow: none;
+  --groupButtonOffset: 0px 0px 0px 0px;
+  --verticalGroupOffset: 0px 0px 0px 0px;
+
+  /*-------------------
+          States
+  --------------------*/
+
+  /* Hovered */
+  --hoverBackgroundColor: #CACBCD;
+  --hoverBackgroundImage:   var(--backgroundImage);
+  --hoverBoxShadow:   var(--boxShadow);
+  --hoverColor:   var(--hoveredTextColor);
+  --iconHoverOpacity: 0.85;
+
+  /* Focused */
+  --focusBackgroundColor:   var(--hoverBackgroundColor);
+  --focusBackgroundImage: '';
+  --focusBoxShadow: '';
+  --focusColor:   var(--hoveredTextColor);
+  --iconFocusOpacity: 0.85;
+
+  /* Pressed Down */
+  --downBackgroundColor: #BABBBC;
+  --downBackgroundImage: '';
+  --downPressedShadow: none;
+  --downBoxShadow: var(--borderBoxShadow), var(--downPressedShadow);
+  --downColor: var(--pressedTextColor);
+
+  /* Active */
+  --activeBackgroundColor: #C0C1C2;
+  --activeBackgroundImage: none;
+  --activeColor:   var(--selectedTextColor);
+  --activeBoxShadow:   var(--borderBoxShadow);
+
+  /* Active + Hovered */
+  --activeHoverBackgroundColor:   var(--activeBackgroundColor);
+  --activeHoverBackgroundImage: none;
+  --activeHoverColor:   var(--activeColor);
+  --activeHoverBoxShadow:   var(--activeBoxShadow);
+
+  /* Loading */
+  --loadingOpacity: 1;
+  --loadingPointerEvents: auto;
+  --loadingTransition: all 0s linear, opacity var(--defaultDuration) var(--defaultEasing);
+
+  /*-------------------
+          Types
+  --------------------*/
+
+  /* Or */
+  --orText: 'or';
+
+  --orGap: 0.3em;
+  --orHeight: calc((var(--verticalPadding)*2) + 1em);
+  --orZIndex: 3;
+
+  --orCircleDistanceToEdge: var(--verticalPadding);
+  --orCircleSize: calc(var(--orHeight) - var(--orCircleDistanceToEdge));
+  --orLineHeight: var(--orCircleSize);
+  --orBoxShadow:   var(--borderBoxShadow);
+
+  --orVerticalOffset: calc(-(var(--orCircleSize)/2));
+  --orHorizontalOffset: calc(-(var(--orCircleSize)/2));
+
+  --orBackgroundColor:   var(--white);
+  --orTextShadow:   var(--invertedTextShadow);
+  --orTextStyle: normal;
+  --orTextWeight: bold;
+  --orTextColor:   var(--lightTextColor);
+
+
+  --orSpacerHeight:   var(--verticalPadding);
+  --orSpacerColor: transparent;
+
+  /* Icon */
+  --iconButtonOpacity: 0.9;
+
+  /* Labeled */
+  --labeledLabelFontSize:   var(--medium);
+  --labeledLabelAlign: center;
+  --labeledLabelPadding: '';
+  --labeledLabelFontSize:   var(--relativeMedium);
+  --labeledLabelBorderColor:   var(--borderColor);
+  --labeledLabelBorderOffset: -  var(--borderBoxShadowWidth);
+  --labeledTagLabelSize: 1.85em; /* hypotenuse of triangle */
+  --labeledIconMargin: 0em;
+
+  /* Labeled Icon */
+  --labeledIconWidth: calc(1em + (var(--verticalPadding)*2));
+  --labeledIconBackgroundColor: rgba(0, 0, 0, 0.05);
+  --labeledIconPadding: calc(var(--horizontalPadding) + var(--labeledIconWidth));
+  --labeledIconBorder: transparent;
+  --labeledIconColor: '';
+
+  --labeledIconLeftShadow: -1px 0px 0px 0px var(--labeledIconBorder) inset;
+  --labeledIconRightShadow: 1px 0px 0px 0px var(--labeledIconBorder) inset;
+
+
+  /* Inverted */
+  --invertedBorderSize: 2px;
+  --invertedTextColor:   var(--white);
+  --invertedTextHoverColor:   var(--hoverColor);
+  --invertedGroupButtonOffset: 0px 0px 0px -(var(--invertedBorderSize));
+  --invertedVerticalGroupButtonOffset: 0px 0px -(var(--invertedBorderSize)) 0px;
+
+  /* Basic */
+  --basicBorderRadius:   var(--borderRadius);
+  --basicBorderSize: 1px;
+  --basicTextColor:   var(--textColor);
+  --basicColoredBorderSize: 1px;
+
+  --basicBackground: transparent none;
+  --basicFontWeight: normal;
+  --basicBorder: 1px solid   var(--borderColor);
+  --basicBoxShadow: 0px 0px 0px   var(--basicBorderSize) var(--borderColor) inset;
+  --basicLoadingColor: var(--offWhite);
+  --basicTextTransform: none;
+
+  /* Basic Hover */
+  --basicHoverBackground: #FFFFFF;
+  --basicHoverTextColor:   var(--hoveredTextColor);
+  --basicHoverBoxShadow:
+0px 0px 0px   var(--basicBorderSize)   var(--selectedBorderColor) inset,
+0px 0px 0px 0px   var(--borderColor) inset
+;
+  /* Basic Focus */
+  --basicFocusBackground:   var(--basicHoverBackground);
+  --basicFocusTextColor:   var(--basicHoverTextColor);
+  --basicFocusBoxShadow:   var(--basicHoverBoxShadow);
+
+  /* Basic Down */
+  --basicDownBackground: #F8F8F8;
+  --basicDownTextColor:   var(--pressedTextColor);
+  --basicDownBoxShadow: 0px 0px 0px var(--basicBorderSize) rgba(0, 0, 0, 0.15) inset, 0px 1px 4px 0px var(--borderColor) inset;
+  /* Basic Active */
+  --basicActiveBackground:   var(--transparentBlack);
+  --basicActiveBoxShadow: '';
+  --basicActiveTextColor:   var(--selectedTextColor);
+
+  /* Basic Inverted */
+  --basicInvertedBackground: transparent;
+  --basicInvertedFocusBackground: transparent;
+  --basicInvertedDownBackground:   var(--transparentWhite);
+  --basicInvertedActiveBackground:   var(--transparentWhite);
+
+  --basicInvertedBoxShadow: 0px 0px 0px   var(--invertedBorderSize) rgba(255, 255, 255, 0.5) inset;
+  --basicInvertedHoverBoxShadow: 0px 0px 0px   var(--invertedBorderSize) rgba(255, 255, 255, 1) inset;
+  --basicInvertedFocusBoxShadow: 0px 0px 0px   var(--invertedBorderSize) rgba(255, 255, 255, 1) inset;
+  --basicInvertedDownBoxShadow: 0px 0px 0px   var(--invertedBorderSize) rgba(255, 255, 255, 0.9) inset;
+  --basicInvertedActiveBoxShadow: 0px 0px 0px   var(--invertedBorderSize) rgba(255, 255, 255, 0.7) inset;
+
+  --basicInvertedColor:   var(--darkWhite);
+  --basicInvertedHoverColor:   var(--darkWhiteHover);
+  --basicInvertedDownColor:   var(--darkWhiteActive);
+  --basicInvertedActiveColor:   var(--invertedTextColor);
+
+
+  /* Basic Group */
+  --basicGroupBorder:   var(--basicBorderSize) solid var(--borderColor);
+  --basicGroupBoxShadow: none;
+
+  /*-------------------
+        Variations
+  --------------------*/
+
+  /* Colors */
+  --coloredBackgroundImage: none;
+  --coloredBoxShadow:   var(--shadowBoxShadow);
+
+  /* Colored */
+  --brownTextColor:   var(--invertedTextColor);
+  --brownTextShadow:   var(--invertedTextShadow);
+  --redTextColor:   var(--invertedTextColor);
+  --redTextShadow:   var(--invertedTextShadow);
+  --orangeTextColor:   var(--invertedTextColor);
+  --orangeTextShadow:   var(--invertedTextShadow);
+  --greenTextColor:   var(--invertedTextColor);
+  --greenTextShadow:   var(--invertedTextShadow);
+  --blueTextColor:   var(--invertedTextColor);
+  --blueTextShadow:   var(--invertedTextShadow);
+  --violetTextColor:   var(--invertedTextColor);
+  --violetTextShadow:   var(--invertedTextShadow);
+  --purpleTextColor:   var(--invertedTextColor);
+  --purpleTextShadow:   var(--invertedTextShadow);
+  --pinkTextColor:   var(--invertedTextColor);
+  --pinkTextShadow:   var(--invertedTextShadow);
+  --blackTextColor:   var(--invertedTextColor);
+  --blackTextShadow:   var(--invertedTextShadow);
+  --oliveTextColor:   var(--invertedTextColor);
+  --oliveTextShadow:   var(--invertedTextShadow);
+  --yellowTextColor:   var(--invertedTextColor);
+  --yellowTextShadow:   var(--invertedTextShadow);
+  --tealTextColor:   var(--invertedTextColor);
+  --tealTextShadow:   var(--invertedTextShadow);
+  --greyTextColor:   var(--invertedTextColor);
+  --greyTextShadow:   var(--invertedTextShadow);
+
+  /* Inverted */
+  --lightBrownTextColor:   var(--invertedTextColor);
+  --lightBrownTextShadow:   var(--invertedTextShadow);
+  --lightRedTextColor:   var(--invertedTextColor);
+  --lightRedTextShadow:   var(--invertedTextShadow);
+  --lightOrangeTextColor:   var(--invertedTextColor);
+  --lightOrangeTextShadow:   var(--invertedTextShadow);
+  --lightGreenTextColor:   var(--invertedTextColor);
+  --lightGreenTextShadow:   var(--invertedTextShadow);
+  --lightBlueTextColor:   var(--invertedTextColor);
+  --lightBlueTextShadow:   var(--invertedTextShadow);
+  --lightVioletTextColor:   var(--invertedTextColor);
+  --lightVioletTextShadow:   var(--invertedTextShadow);
+  --lightPurpleTextColor:   var(--invertedTextColor);
+  --lightPurpleTextShadow:   var(--invertedTextShadow);
+  --lightPinkTextColor:   var(--invertedTextColor);
+  --lightPinkTextShadow:   var(--invertedTextShadow);
+  --lightBlackTextColor:   var(--invertedTextColor);
+  --lightBlackTextShadow:   var(--invertedTextShadow);
+  --lightOliveTextColor:   var(--textColor);
+  --lightOliveTextShadow:   var(--textShadow);
+  --lightYellowTextColor:   var(--textColor);
+  --lightYellowTextShadow:   var(--textShadow);
+  --lightTealTextColor:   var(--textColor);
+  --lightTealTextShadow:   var(--textShadow);
+  --lightGreyTextColor:   var(--textColor);
+  --lightGreyTextShadow:   var(--textShadow);
+
+
+  /* Ordinality */
+  --primaryBackgroundImage:   var(--coloredBackgroundImage);
+  --primaryTextColor:   var(--invertedTextColor);
+  --primaryTextShadow:   var(--invertedTextShadow);
+  --primaryBoxShadow:   var(--coloredBoxShadow);
+
+  --secondaryBackgroundImage:   var(--coloredBackgroundImage);
+  --secondaryTextColor:   var(--invertedTextColor);
+  --secondaryTextShadow:   var(--invertedTextShadow);
+  --secondaryBoxShadow:   var(--coloredBoxShadow);
+
+  /* Compact */
+  --compactVerticalPadding: calc( var(--verticalPadding) * 0.75);
+  --compactHorizontalPadding: calc( var(--horizontalPadding) * 0.75);
+
+  /* Attached */
+  --attachedOffset: -1px;
+  --attachedBoxShadow: 0px 0px 0px 1px   var(--borderColor);
+  --attachedHorizontalPadding: 0.75em;
+  --attachedZIndex: 2;
+
+  /* Floated */
+  --floatedMargin: 0.25em;
+
+  /* Animated */
+  --animatedVerticalAlign: middle;
+  --animatedZIndex: 1;
+  --animationDuration: 0.3s;
+  --animationEasing: ease;
+  --fadeScaleHigh: 1.5;
+  --fadeScaleLow: 0.75;
+}

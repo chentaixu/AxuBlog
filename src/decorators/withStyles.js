@@ -97,7 +97,6 @@ function withStyles(name, styles) {
     }
 
     componentWillReceiveProps(nextProps) {
-      console.log(this.context);
       if(nextProps.uiVariant!==this.props.uiVariant){
         this.setState({themeStyle: getThemeStyle(name, this.context.cssTheme, this.props.uiVariant)});
       }

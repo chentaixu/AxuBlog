@@ -26,5 +26,9 @@
   "Container":{
     "default":"ContainerStyle",
     "variant":{}
+  },
+  "Loader":{
+    "default":"LoaderStyle",
+    "variant":{}
   }
 }

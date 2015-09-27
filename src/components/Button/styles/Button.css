@@ -1,8 +1,90 @@
 @import "./ButtonVars.css";
 
+@keyframes Button-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
 .Button {
 
-  &.think-is-wtf {
-     color: green;
+  /* Layout Related */
+  display: inline-block;
+  outline: none;
+  border: none;
+  margin: 0em var(--horizontalMargin) var(--verticalMargin) 0em;
+  padding: var(--verticalPadding) var(--horizontalPadding) calc(var(--verticalPadding) + var(--shadowOffset));
+  min-height: 1em;
+  vertical-align: var(--verticalAlign);
+  position: relative;
+
+  /* Interaction Related */
+  cursor: pointer;
+
+  /* Appearance Related */
+  background: var(--background);
+  color: var(--textColor);
+  box-shadow: var(--boxShadow);
+  border-radius: var(--borderRadius);
+
+  /* Text Related */
+  font-family: var(--fontFamily);
+  text-transform: var(--textTransform);
+  text-shadow: var(--textShadow);
+  font-weight: var(--fontWeight);
+  line-height: var(--lineHeight);
+  font-style: normal;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+
+  /* Transition related */
+  transition: var(--transition);
+  will-change: var(--willChange);
+
+  /* Hack */
+  -webkit-tap-highlight-color: var(--tapColor);
+
+
+  /********** State Groups **********/
+
+
+  /* Attention State */
+  &.attention {
+    &-is-focus {
+      background-color: var(--hoverBackgroundColor);
+      background-image: var(--hoverBackgroundImage);
+      box-shadow: var(--hoverBoxShadow);
+      color: var(--hoverColor);
+    }
+    &-is-interact {
+      background-color: var(--downBackgroundColor);
+      background-image: var(--downBackgroundImage);
+      box-shadow: var(--downBoxShadow);
+      color: var(--downColor);
+    }
+    &-is-fixed {
+      background-color: var(--activeBackgroundColor);
+      background-image: var(--activeBackgroundImage);
+      box-shadow: var(--activeBoxShadow);
+      color: var(--activeColor);
+    }
   }
+
+  /* Content State */
+  &.content {
+    &-is-loading {
+      cursor: default;
+      opacity: var(--loadingOpacity);
+      pointer-events: var(--loadingPointerEvents);
+      transition: var(--loadingTransition);
+      text-shadow: none;
+      color: transparent;
+    }
+  }
+
 }

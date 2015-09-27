@@ -1,0 +1,24 @@
+@import "LoaderVars.css";
+
+.Loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  /* Size and Position Hack */
+  margin: var(--loaderMargin);
+  width: var(--loaderSize);
+  height: var(--loaderSize);
+
+  &.container {
+    &-is-button {
+
+    }
+    &-is-segment {
+      margin: var(--bigLoaderMargin);
+      width: var(--bigLoaderSize);
+      height: var(--bigLoaderSize);
+    }
+  }
+
+}

@@ -6,6 +6,7 @@ import withStyles from '../../decorators/withStyles';
 import Container from '../Container';
 import Segment from '../Segment';
 import Button from '../Button';
+import Loader from '../Loader';
 
 let name = 'ContentPage';
 let styles = {ContentPageStyle};
@@ -34,6 +35,7 @@ class ContentPage extends Component {
           }
           <div dangerouslySetInnerHTML={{__html: this.props.content || ''}} />
               <Button> BBB </Button>
+              <Loader uiType={'puff'} uiInitialStates={new Map([['container','segment']])}/>
               </Segment>
           </Container>
       </div>

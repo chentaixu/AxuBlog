@@ -1,0 +1,15 @@
+@import "../../SiteVars.css";
+
+:root {
+
+
+  /* Default */
+  --loaderOffset : calc(-(var(--loaderSize) / 2));
+  --loaderMargin : var(--loaderOffset) 0em 0em var(--loaderOffset);
+
+  /* Big Variant */
+  --bigLoaderSize   : 3em;
+  --bigLoaderOffset : calc(-(var(--bigLoaderSize) / 2));
+  --bigLoaderMargin : var(--bigLoaderOffset) 0em 0em var(--bigLoaderOffset);
+
+}
