@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import { Map, List } from 'immutable';
 import withStyles from '../../decorators/withStyles';
 import LoaderStyle from './styles/Loader.css';
 
@@ -11,18 +12,17 @@ class Loader extends Component {
 
   static propTypes = {
     uiType: PropTypes.string.isRequired,
-    uiInitialStates: PropTypes.instanceOf(Map),
+    uiInitialStates: PropTypes.object.isRequired,
     getUiClassName: PropTypes.func.isRequired
   };
 
   state = {
-    uiStates: this.props.uiInitialStates?this.props.uiInitialStates:new Map()
+    uiStates: Map(this.props.uiInitialStates)
   };
 
   render(){
-
     return (
-      <img className={this.props.getUiClassName(this.props.uiType,this.state.uiStates)} src={require('./svgs/'+this.props.uiType+'.svg')}/>
+      <img className={this.props.getUiClassName(this.state.uiStates)} src={require('./svgs/'+this.props.uiType+'.svg')}/>
     );
   }
 }

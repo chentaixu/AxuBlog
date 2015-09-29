@@ -1,12 +1,12 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
 import 'babel/polyfill';
-import _ from 'lodash';
-import fs from 'fs';
 import path from 'path';
 import express from 'express';
+import React from 'react';
 import ReactDOM from 'react-dom/server';
 import Router from './Router';
+import Html from './components/Html';
 
 const server = global.server = express();
 
@@ -22,10 +22,6 @@ server.use('/api/theme', require('./api/theme'));
 //
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------
-
-// The top-level React component + HTML template for it
-const templateFile = path.join(__dirname, 'templates/index.html');
-const template = _.template(fs.readFileSync(templateFile, 'utf8'));
 
 server.get('*', async (req, res, next) => {
   try {
@@ -46,8 +42,8 @@ server.get('*', async (req, res, next) => {
       data.css = css.join('');
     });
 
-    const html = template(data);
-    res.status(statusCode).send(html);
+    const html = ReactDOM.renderToStaticMarkup(<Html {...data} />);
+    res.status(statusCode).send('<!doctype html>\n'+html);
   } catch (err) {
     next(err);
   }

@@ -28,14 +28,13 @@ class ContentPage extends Component {
     this.context.onSetTitle(this.props.title);
     return (
       <div>
-          <Container uiType={'text'} uiInitialStates={new Map([['alignment','toRight']])}>
-            <Segment uiType={'stacked'} uiInitialStates={new Map([['color','green']])}>
+          <Container uiType={'text'} uiInitialStates={{alignment:'toRight'}}>
+            <Segment uiType={'stacked'} uiInitialStates={{color:'red'}}>
           {
             this.props.path === '/' ? null : <h1>{this.props.title}</h1>
           }
           <div dangerouslySetInnerHTML={{__html: this.props.content || ''}} />
-              <Button> BBB </Button>
-              <Loader uiType={'puff'} uiInitialStates={new Map([['container','segment']])}/>
+              <Button/> <Button uiInitialStates={{attention:'fixed'}}/>
               </Segment>
           </Container>
       </div>

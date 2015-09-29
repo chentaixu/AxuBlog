@@ -9,22 +9,22 @@
 
 import path from 'path';
 import webpack, { DefinePlugin, BannerPlugin } from 'webpack';
-import merge from 'lodash/object/merge';
+import merge from 'lodash.merge';
 
 const DEBUG = !process.argv.includes('release');
 const WATCH = global.WATCH === undefined ? false : global.WATCH;
 const VERBOSE = process.argv.includes('verbose');
 const STYLE_LOADER = 'style-loader/useable';
-const CSS_LOADER = DEBUG ? 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]' : 'css-loader?modules&importLoaders=1&minimize';
+const CSS_LOADER = DEBUG ? 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&minimize' : 'css-loader?modules&importLoaders=1&minimize';
 const AUTOPREFIXER_BROWSERS = [
   'Android 2.3',
   'Android >= 4',
-  'Chrome >= 20',
-  'Firefox >= 24',
-  'Explorer >= 8',
-  'iOS >= 6',
+  'Chrome >= 35',
+  'Firefox >= 31',
+  'Explorer >= 9',
+  'iOS >= 7',
   'Opera >= 12',
-  'Safari >= 6'
+  'Safari >= 7.1'
 ];
 const GLOBALS = {
   'process.env.NODE_ENV': DEBUG ? '"development"' : '"production"',
@@ -88,32 +88,15 @@ const config = {
     }]
   },
 
-  postcss: [
-    require('postcss-nested')(),
-    require('postcss-import')(),
-    require('postcss-url')(),
-    require('postcss-custom-properties')(),
-    require('postcss-calc')(),
-    require('postcss-simple-vars')(),
-    require('postcss-custom-media')(),
-    require('postcss-media-minmax')(),
-    require('postcss-custom-selectors')(),
-    require('postcss-color-rebeccapurple')(),
-    require('postcss-color-hwb')(),
-    require('postcss-color-gray')(),
-    require('postcss-color-hex-alpha')(),
-    require('postcss-color-function')(),
-    require('postcss-font-variant')(),
-    require('pixrem')(),
-    require('postcss-pseudoelements')(),
-    require('postcss-selector-matches')(),
-    require('postcss-selector-not')(),
-    require('postcss-pseudo-class-any-link')(),
-    require('postcss-color-rgba-fallback')(),
-    require('autoprefixer')(AUTOPREFIXER_BROWSERS),
-    require('cssnano')(),
-    require('postcss-reporter')()
-  ]
+  postcss: function plugins() {
+    return [
+      require('postcss-import')({
+        onImport: files => files.forEach(this.addDependency)
+      }),
+      require('postcss-nested')(),
+      require('postcss-cssnext')({autoprefixer: AUTOPREFIXER_BROWSERS})
+    ];
+  }
 };
 
 //

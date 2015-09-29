@@ -28,9 +28,7 @@ export default async () => {
     // Css themes
     copy('src/themes', 'build/themes'),
 
-    // Website and email templates
-    copy('src/templates', 'build/templates'),
-
+    // Packages
     copy('package.json', 'build/package.json')
   ]);
 
@@ -45,14 +43,14 @@ export default async () => {
   if (global.WATCH) {
     const watcher = await watch('src/contents/**/*.*');
     watcher.on('changed', async (file) => {
-      file = file.substr(path.join(__dirname, '../src/contents/').length);
-      await copy(`src/contents/${file}`, `build/contents/${file}`);
+      const relPath = file.substr(path.join(__dirname, '../src/contents/').length);
+      await copy(`src/contents/${relPath}`, `build/contents/${relPath}`);
     });
 
     const themeWatcher = await watch('src/themes/**/*.*');
     themeWatcher.on('changed', async(file)=>{
-      file = file.substr(path.join(__dirname, '../src/themes/').length);
-      await copy(`src/themes/${file}`, `build/themes/${file}`);
+      const relPath = file.substr(path.join(__dirname, '../src/themes/').length);
+      await copy(`src/themes/${relPath}`, `build/themes/${relPath}`);
     })
   }
 };

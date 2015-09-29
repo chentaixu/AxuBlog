@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import { Map, List } from 'immutable';
 import SegmentStyle from './styles/Segment.css';
 import withStyles from '../../decorators/withStyles';
 
@@ -9,18 +10,17 @@ let styles = {SegmentStyle};
 class Segment extends Component {
 
   static propTypes = {
-    uiType: PropTypes.string,
-    uiInitialStates: PropTypes.instanceOf(Map),
+    uiInitialStates: PropTypes.object.isRequired,
     getUiClassName: PropTypes.func.isRequired
   };
 
   state = {
-    uiStates: this.props.uiInitialStates?this.props.uiInitialStates:new Map()
+    uiStates: Map(this.props.uiInitialStates)
   };
 
   render(){
     return (
-      <div className={this.props.getUiClassName(this.props.uiType,this.state.uiStates)}>
+      <div className={this.props.getUiClassName(this.state.uiStates)}>
         {this.props.children}
       </div>
     );

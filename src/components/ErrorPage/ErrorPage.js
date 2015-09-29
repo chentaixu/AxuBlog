@@ -1,6 +1,6 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import withStyles from '../../decorators/withStyles';
 import ErrorPageStyle from './styles/ErrorPage.css';
 
@@ -8,7 +8,7 @@ let name = 'ErrorPage';
 let styles = {ErrorPageStyle};
 
 @withStyles(name, styles)
-class ErrorPage {
+class ErrorPage extends Component {
 
   static contextTypes = {
     onSetTitle: PropTypes.func.isRequired,

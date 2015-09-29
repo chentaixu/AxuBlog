@@ -10,7 +10,7 @@ let VARIANT_TYPE='variant';
 
 const getThemeStyle = (name, cssTheme, variant) => !variant? cssTheme[name][DEFAULT_TYPE]:cssTheme[name][VARIANT_TYPE][variant];
 
-const getUiClassNameMapping = (style, uiName) => (uiType, uiStates) => {
+const getUiClassNameMapping = (style, uiName, uiType) => (uiStates) => {
   let localUiName = style.locals[uiName]?style.locals[uiName]:'';
   let localUiType = style.locals[uiName+'--'+uiType]?style.locals[uiName+'--'+uiType]:'';
   let localUiStates = '';
@@ -104,10 +104,11 @@ function withStyles(name, styles) {
 
     render() {
       let uiStyle = styles[this.state.themeStyle];
-      let { uiVariant, ...other} = this.props;
-      let getUiClassName = getUiClassNameMapping(uiStyle, name);
+      let { uiVariant, uiInitialStates, ...other} = this.props;
+      let getUiClassName = getUiClassNameMapping(uiStyle, name, this.props.uiType);
+      if(!uiInitialStates) uiInitialStates = {};
 
-      return <ComposedComponent {...other} getUiClassName = {getUiClassName} />;
+      return <ComposedComponent {...other} getUiClassName = {getUiClassName} uiInitialStates={uiInitialStates}/>;
     }
 
   };

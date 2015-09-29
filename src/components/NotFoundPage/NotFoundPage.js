@@ -1,6 +1,6 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import withStyles from '../../decorators/withStyles';
 import NotFoundPageStyle from './styles/NotFoundPage.css';
 
@@ -8,7 +8,7 @@ let name = 'NotFoundPage';
 let styles = {NotFoundPageStyle};
 
 @withStyles(name, styles)
-class NotFoundPage {
+class NotFoundPage extends Component {
 
   static contextTypes = {
     onSetTitle: PropTypes.func.isRequired,

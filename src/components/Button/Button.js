@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import { Map, List } from 'immutable';
 import withStyles from '../../decorators/withStyles';
 import ButtonStyle from './styles/Button.css';
 import Loader from '../Loader';
@@ -10,27 +11,45 @@ let styles = {ButtonStyle};
 class Button extends Component {
 
   handleMouseOver = (event) => {
-    this.setState({uiStates:this.state.uiStates.set('attention','focus')});
+    if(this.state.uiStates.get('attention')!=='fixed') {
+      this.setState(({uiStates}) => ({uiStates: uiStates.set('attention', 'focus')}));
+    }
   };
 
   handleMouseOut = (event) => {
-    this.setState();
+    if(this.state.uiStates.get('attention')!=='fixed') {
+      this.setState(({uiStates}) => ({uiStates: uiStates.delete('attention')}));
+    }
+  };
+
+  handleMouseDown = (event) => {
+    let originalAttention = this.state.uiStates.get('attention');
+    if(originalAttention!=='fixed') {
+      this.setState(({uiStates}) => ({uiStates: uiStates.set('attention','interact')}));
+      this.setState(({lastAttention}) => ({lastAttention:originalAttention}));
+    }
+  };
+
+  handleMouseUp = (event) => {
+    if(this.state.uiStates.get('attention')!=='fixed') {
+      this.state.lastAttention?this.setState(({uiStates}) => ({uiStates: uiStates.set('attention',this.state.lastAttention)})):this.setState(({uiStates}) => ({uiStates: uiStates.delete('attention')}));
+    }
   };
 
   static propTypes = {
-    uiType: PropTypes.string,
-    uiInitialStates: PropTypes.instanceOf(Map),
+    uiInitialStates: PropTypes.object.isRequired,
     getUiClassName: PropTypes.func.isRequired
   };
 
   state = {
-    uiStates: this.props.uiInitialStates?this.props.uiInitialStates:new Map()
+    uiStates: Map(this.props.uiInitialStates),
+    lastAttention: ''
   };
 
   render(){
     return (
-      <button className={this.props.getUiClassName(this.props.uiType,this.state.uiStates)}  onMouseOver={this.handleMouseOver}>
-        <Loader uiType={'audio'} uiInitialStates={new Map([['container','button']])} />
+      <button className={this.props.getUiClassName(this.state.uiStates)}  onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp}>
+        <Loader uiType={'audio'} uiInitialStates={{container:'button'}} />
       </button>
     );
   }
