@@ -1,16 +1,5 @@
 @import "./SegmentVars.css";
 
-
-/* Animations */
-@keyframes Segment-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .Segment {
   position: relative;
   background: var(--background);
@@ -33,7 +22,7 @@
 
 
   /* vertical type */
-  &.&--vertical {
+  &&--vertical {
     margin: 0em;
     padding-left: 0em;
     padding-right: 0em;
@@ -49,7 +38,7 @@
     }
   }
 
-  &.&--piled {
+  &&--piled {
     margin: var(--piledMargin) 0em;
     box-shadow: var(--piledBoxShadow);
     z-index: var(--piledZIndex);
@@ -109,7 +98,7 @@
   }
 
   /* stacked type */
-  &.&--stacked {
+  &&--stacked {
     padding-bottom: var(--stackedPadding);
     &::before {
       content: '';
@@ -163,7 +152,7 @@
   }
 
   /* circular type */
-  &.&--circular {
+  &&--circular {
     display: table-cell;
     padding: var(--circularPadding);
     text-align: center;
@@ -173,7 +162,7 @@
 
   /* basic type */
 
-  &.&--basic {
+  &&--basic {
     background: var(--basicBackground);
     box-shadow: var(--basicBoxShadow);
     border: var(--basicBorder);
@@ -182,7 +171,7 @@
 
   /* clearing type */
 
-  &.&--clearing {
+  &&--clearing {
     &::after {
        content: ".";
        display: block;

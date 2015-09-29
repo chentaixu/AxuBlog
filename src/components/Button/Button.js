@@ -49,7 +49,7 @@ class Button extends Component {
   render(){
     return (
       <button className={this.props.getUiClassName(this.state.uiStates)}  onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp}>
-        <Loader uiType={'audio'} uiInitialStates={{container:'button'}} />
+        {this.props.children}
       </button>
     );
   }

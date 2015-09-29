@@ -47,14 +47,14 @@
 
 
   /* Modifiers */
-  &.&--text{
+  &&--text {
     font-family: var(--textFontFamily);
     max-width: var(--textWidth);
     line-height: var(--textLineHeight);
     font-size: var(--textSize);
   }
 
-  &.&--fluid{
+  &&--fluid {
     width: 100%;
   }
 

@@ -15,7 +15,7 @@ const DEBUG = !process.argv.includes('release');
 const WATCH = global.WATCH === undefined ? false : global.WATCH;
 const VERBOSE = process.argv.includes('verbose');
 const STYLE_LOADER = 'style-loader/useable';
-const CSS_LOADER = DEBUG ? 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&minimize' : 'css-loader?modules&importLoaders=1&minimize';
+const CSS_LOADER = DEBUG ? 'css-loader?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]&minimize' : 'css-loader?modules&importLoaders=1&minimize';
 const AUTOPREFIXER_BROWSERS = [
   'Android 2.3',
   'Android >= 4',
@@ -94,7 +94,8 @@ const config = {
         onImport: files => files.forEach(this.addDependency)
       }),
       require('postcss-nested')(),
-      require('postcss-cssnext')({autoprefixer: AUTOPREFIXER_BROWSERS})
+      require('postcss-cssnext')({autoprefixer: AUTOPREFIXER_BROWSERS}),
+      require('postcss-simple-vars')()
     ];
   }
 };

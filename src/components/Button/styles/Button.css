@@ -49,6 +49,40 @@
   /* Hack */
   -webkit-tap-highlight-color: var(--tapColor);
 
+  /********** Type Groups **********/
+  &&--basic {
+    /* Appearance Related */
+    background: var(--basicBackground);
+    color: var(--basicTextColor);
+    box-shadow: var(--basicBoxShadow);
+    border-radius: var(--basicBorderRadius);
+
+    /* Text Related */
+    font-weight: var(--basicFontWeight);
+    box-shadow: var(--basicBoxShadow);
+    text-transform: var(--basicTextTransform);
+    text-shadow: none;
+
+    &.attention {
+      &-is-focus {
+        background: var(--basicFocusBackground);
+        color: var(--basicFocusTextColor);
+        box-shadow: var(--basicFocusBoxShadow);
+      }
+      &-is-fixed {
+        background: var(--basicDownBackground);
+        color: var(--basicDownTextColor);
+        box-shadow: var(--basicDownBoxShadow);
+      }
+      &-is-interact {
+        background: var(--basicDownBackground);
+        color: var(--basicDownTextColor);
+        box-shadow: var(--basicDownBoxShadow);
+      }
+    }
+
+  }
+
 
   /********** State Groups **********/
 
@@ -56,10 +90,10 @@
   /* Attention State */
   &.attention {
     &-is-focus {
-      background-color: var(--hoverBackgroundColor);
-      background-image: var(--hoverBackgroundImage);
-      box-shadow: var(--hoverBoxShadow);
-      color: var(--hoverColor);
+      background-color: var(--focusBackgroundColor);
+      background-image: var(--focusBackgroundImage);
+      box-shadow: var(--focusBoxShadow);
+      color: var(--focusColor);
     }
     &-is-interact {
       background-color: var(--downBackgroundColor);

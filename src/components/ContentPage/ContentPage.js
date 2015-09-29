@@ -34,7 +34,8 @@ class ContentPage extends Component {
             this.props.path === '/' ? null : <h1>{this.props.title}</h1>
           }
           <div dangerouslySetInnerHTML={{__html: this.props.content || ''}} />
-              <Button/> <Button uiInitialStates={{attention:'fixed'}}/>
+              <Button uiType={'basic'}>ClickMePlease!</Button>
+              <Button uiInitialStates={{attention:'fixed'}}>MEME!</Button>
               </Segment>
           </Container>
       </div>
