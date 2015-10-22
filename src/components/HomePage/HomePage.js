@@ -25,7 +25,7 @@ class HomePage extends Component {
     let uiClassName=this.props.getUiClassName(this.state.uiStates);
     return (
       <div data-layout='column'>
-        <div data-layout='row' data-viewport-hide={'mobile tablet'}>
+        <div data-layout='row'>
             <Section uiType={'pillar'}/>
             <Section uiType={'pillar'}/>
             <Section/>
