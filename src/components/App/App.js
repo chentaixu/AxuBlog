@@ -1,13 +1,14 @@
 import React, { PropTypes, Component } from 'react';
+import { Map, List } from 'immutable';
 import withContext from '../../decorators/withContext';
 import withStyles from '../../decorators/withStyles';
+import withViewport from '../../decorators/withViewport';
 import AppStyle from './styles/App.css';
+import NavigationBar from '../NavigationBar';
 
-let name = 'App';
-let styles = {AppStyle};
-
+@withViewport
 @withContext
-@withStyles(name,styles)
+@withStyles('App',{AppStyle})
 class App extends Component {
 
   static propTypes = {
@@ -15,13 +16,19 @@ class App extends Component {
     error: PropTypes.object
   };
 
+  static contextTypes = {
+    viewport: PropTypes.object.isRequired
+  };
+
+
   render() {
     return !this.props.error ? (
-      <div>
+      <div data-layout='app'>
+        <NavigationBar/>
         {this.props.children}
       </div>
     ) : this.props.children;
-  }
+  };
 
 }
 

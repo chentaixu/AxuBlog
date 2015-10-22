@@ -80,7 +80,7 @@ const config = {
       test: /\.txt$/,
       loader: 'raw-loader'
     }, {
-      test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+      test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|pac)$/,
       loader: 'url-loader?limit=10000'
     }, {
       test: /\.(eot|tft|wav|mp3)$/,

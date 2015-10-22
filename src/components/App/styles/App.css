@@ -1,12 +1,62 @@
 @import '../../../../node_modules/normalize.css/normalize.css';
-@import './AppVars.css';
+@import '../../GlobalVars.css';
 
-/* Border-Box */
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
-html {
+html,body,:global(#app) {
   box-sizing: border-box;
+  position  :absolute;
+  width     :100%;
+  height    :100%;
+}
+
+:root {
+
+  div[data-layout] {
+    display : flex;
+    flex-grow : 1;
+  }
+
+  div[data-layout=app] {
+    flex-direction : column;
+    width   :100%;
+    height  :100%;
+  }
+
+
+  div[data-layout=row] {
+    flex-direction : row;
+  }
+
+  div[data-layout=column] {
+    flex-direction : column;
+  }
+
+  div[data-viewport-hide~=mobile] {
+    @media (--mobile-viewport) {
+      display : none;
+    }
+  }
+
+  div[data-viewport-hide~=tablet] {
+    @media (--tablet-viewport) {
+      display : none;
+    }
+  }
+
+  div[data-viewport-hide~=computer] {
+    @media (--computer-viewport) {
+      display : none;
+    }
+  }
+
+  div[data-viewport-hide~=largeMonitor] {
+    @media (--largeMonitor-viewport) {
+      display : none;
+    }
+  }
+
 }

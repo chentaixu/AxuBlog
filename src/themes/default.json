@@ -23,12 +23,24 @@
     "default":"ButtonStyle",
     "variant":{}
   },
-  "Container":{
-    "default":"ContainerStyle",
+  "Loader": {
+    "default":"LoaderStyle",
     "variant":{}
   },
-  "Loader":{
-    "default":"LoaderStyle",
+  "Header": {
+    "default":"HeaderStyle",
+    "variant":{}
+  },
+  "NavigationBar": {
+    "default":"NavigationBarStyle",
+    "variant":{}
+  },
+  "HomePage": {
+    "default":"HomePageStyle",
+    "variant":{}
+  },
+  "Section": {
+    "default":"SectionStyle",
     "variant":{}
   }
 }

@@ -1,9 +1,7 @@
 :root {
 
 
-  /*-------------------
-          Fonts
-  --------------------*/
+  /********** Font Groups **********/
 
   --fontName          : 'Lato';
   --fontSmoothing     : antialiased;
@@ -11,13 +9,44 @@
   --headerFont        : var(--fontName), 'Helvetica Neue', Arial, Helvetica, sans-serif;
   --pageFont          : var(--fontName), 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
-
-  /*-------------------
-        Base Sizes
-  --------------------*/
+  /* Font Size */
 
   font-size: 14px;
   --rootFontSize: 14;
+
+  /********** Responsive Groups **********/
+
+  /* Breakpoints */
+
+  --tabletBreakpoint            : 768px;
+  --computerBreakpoint          : 960px;
+  --largeMonitorBreakpoint      : 1280px;
+
+
+  $tabletBreakpointVar            : var(--tabletBreakpoint);
+  $computerBreakpointVar          : var(--computerBreakpoint);
+  $largeMonitorBreakpointVar      : var(--largeMonitorBreakpoint);
+
+
+  $largestMobileScreenVar : calc(var(--tabletBreakpoint) - 1px);
+  $largestTabletScreenVar : calc(var(--computerBreakpoint) - 1px);
+  $largestSmallMonitorVar : calc(var(--largeMonitorBreakpoint) - 1px);
+
+  /* Mobile */
+  @custom-media --mobile-viewport only screen and (max-width:$largestMobileScreenVar);
+
+
+  /* Tablet */
+  @custom-media --tablet-viewport only screen and (min-width:$tabletBreakpointVar) and (max-width:$largestTabletScreenVar);
+
+  /* Small Monitor */
+  @custom-media --computer-viewport only screen and (min-width:$computerBreakpointVar) and (max-width:$largestSmallMonitorVar);
+
+  /* Large Monitor */
+  @custom-media --largeMonitor-viewport only screen and (min-width:$largeMonitorBreakpointVar);
+
+
+
 
   /*-------------------
       Border Radius
@@ -164,22 +193,7 @@
   --defaultEasing   : ease;
 
 
-  /*-------------------
-      Breakpoints
-  --------------------*/
 
-  --mobileBreakpoint            : 320px;
-  --tabletBreakpoint            : 768px;
-  --computerBreakpoint          : 992px;
-  --largeMonitorBreakpoint      : 1200px;
-  --widescreenMonitorBreakpoint : 1920px;
-
-
-  $mobileBreakpointVar            : var(--mobileBreakpoint);
-  $tabletBreakpointVar            : var(--tabletBreakpoint);
-  $computerBreakpointVar          : var(--computerBreakpoint);
-  $largeMonitorBreakpointVar      : var(--largeMonitorBreakpoint);
-  $widescreenMonitorBreakpointVar : var(--widescreenMonitorBreakpoint);
 
 
   /*-------------------
@@ -480,11 +494,7 @@
   --errorTextColor         : var(--negativeTextColor);
 
 
-  /* Responsive */
-  $largestMobileScreenVar : calc(var(--tabletBreakpoint) - 1px);
-  $largestTabletScreenVar : calc(var(--computerBreakpoint) - 1px);
-  $largestSmallMonitorVar : calc(var(--largeMonitorBreakpoint) - 1px);
-  $largestLargeMonitorVar : calc(var(--widescreenMonitorBreakpoint) - 1px);
+
 
   /* Columns */
   --oneWide        : calc(1 / var(--columnCount) * 100%);

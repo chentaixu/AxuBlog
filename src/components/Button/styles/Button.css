@@ -1,15 +1,5 @@
 @import "./ButtonVars.css";
 
-@keyframes Button-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
 .Button {
 
   /* Layout Related */
@@ -50,6 +40,8 @@
   -webkit-tap-highlight-color: var(--tapColor);
 
   /********** Type Groups **********/
+
+  /* Basic Type */
   &&--basic {
     /* Appearance Related */
     background: var(--basicBackground);

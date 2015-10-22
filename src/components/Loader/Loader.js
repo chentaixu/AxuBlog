@@ -3,11 +3,7 @@ import { Map, List } from 'immutable';
 import withStyles from '../../decorators/withStyles';
 import LoaderStyle from './styles/Loader.css';
 
-
-let name = 'Loader';
-let styles = {LoaderStyle};
-
-@withStyles(name,styles)
+@withStyles('Loader',{LoaderStyle})
 class Loader extends Component {
 
   static propTypes = {

@@ -1,0 +1,17 @@
+.Section {
+
+  &[data-uipart='main'] {
+    flex-grow : 1;
+  }
+
+  &&--pillar {
+    &[data-uipart='header'] {
+      height: 100px;
+    }
+    &[data-uipart='content'] {
+      flex-grow : 1;
+      background: green;
+    }
+  }
+
+}

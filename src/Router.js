@@ -7,6 +7,7 @@ import App from './components/App';
 import ContentPage from './components/ContentPage';
 import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
+import HomePage from './components/HomePage';
 
 const router = new Router(on => {
 
@@ -21,15 +22,19 @@ const router = new Router(on => {
     return component;
   });
 
-  on('*', async (state) => {
+  on('/', async (state) => {
+    return <HomePage/>;
+  });
+
+  on('/content', async (state) => {
     const content = await http.get(`/api/content?path=${state.path}`);
     return content && <ContentPage {...content} />;
   });
 
-  on('error', (state, error) => state.statusCode === 404 ?
+  on('error', (state, error) => {
+    return state.statusCode === 404 ?
     <App context={state.context} error={error}><NotFoundPage /></App> :
-    <App context={state.context} error={error}><ErrorPage /></App>
-  );
+    <App context={state.context} error={error}><ErrorPage /></App>});
 
 });
 

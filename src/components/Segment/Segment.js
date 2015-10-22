@@ -3,10 +3,8 @@ import { Map, List } from 'immutable';
 import SegmentStyle from './styles/Segment.css';
 import withStyles from '../../decorators/withStyles';
 
-let name = 'Segment';
-let styles = {SegmentStyle};
 
-@withStyles(name,styles)
+@withStyles('Segment',{SegmentStyle})
 class Segment extends Component {
 
   static propTypes = {

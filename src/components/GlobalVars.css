@@ -1,0 +1,34 @@
+:root {
+
+  /********** Responsive Groups **********/
+
+  /* Breakpoints */
+
+  --tabletBreakpoint            : 768px;
+  --computerBreakpoint          : 960px;
+  --largeMonitorBreakpoint      : 1280px;
+
+
+  $tabletBreakpointVar            : var(--tabletBreakpoint);
+  $computerBreakpointVar          : var(--computerBreakpoint);
+  $largeMonitorBreakpointVar      : var(--largeMonitorBreakpoint);
+
+
+  $largestMobileScreenVar : calc(var(--tabletBreakpoint) - 1px);
+  $largestTabletScreenVar : calc(var(--computerBreakpoint) - 1px);
+  $largestSmallMonitorVar : calc(var(--largeMonitorBreakpoint) - 1px);
+
+  /* Mobile */
+  @custom-media --mobile-viewport only screen and (max-width:$largestMobileScreenVar);
+
+
+  /* Tablet */
+  @custom-media --tablet-viewport only screen and (min-width:$tabletBreakpointVar) and (max-width:$largestTabletScreenVar);
+
+  /* Small Monitor */
+  @custom-media --computer-viewport only screen and (min-width:$computerBreakpointVar) and (max-width:$largestSmallMonitorVar);
+
+  /* Large Monitor */
+  @custom-media --largeMonitor-viewport only screen and (min-width:$largeMonitorBreakpointVar);
+
+}

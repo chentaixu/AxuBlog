@@ -1,0 +1,8 @@
+.NavigationBar {
+  display :block;
+  height  :100px;
+  /* Appearance */
+  box-shadow : 0 1px 0 grey;
+  /* Hack for iphone */
+  border-radius : 1px;
+}

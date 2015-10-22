@@ -4,10 +4,7 @@ import withStyles from '../../decorators/withStyles';
 import ButtonStyle from './styles/Button.css';
 import Loader from '../Loader';
 
-let name = 'Button';
-let styles = {ButtonStyle};
-
-@withStyles(name,styles)
+@withStyles('Button',{ButtonStyle})
 class Button extends Component {
 
   handleMouseOver = (event) => {

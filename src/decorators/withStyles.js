@@ -22,7 +22,6 @@ const getUiClassNameMapping = (style, uiName, uiType) => (uiStates) => {
   return (localUiName+' '+localUiType+' '+localUiStates).trim();
 };
 
-
 function withStyles(name, styles) {
   return (ComposedComponent) => class WithStyles extends Component {
 

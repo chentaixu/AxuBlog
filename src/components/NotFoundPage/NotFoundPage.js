@@ -4,10 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import withStyles from '../../decorators/withStyles';
 import NotFoundPageStyle from './styles/NotFoundPage.css';
 
-let name = 'NotFoundPage';
-let styles = {NotFoundPageStyle};
-
-@withStyles(name, styles)
+@withStyles('NotFoundPage', {NotFoundPageStyle})
 class NotFoundPage extends Component {
 
   static contextTypes = {

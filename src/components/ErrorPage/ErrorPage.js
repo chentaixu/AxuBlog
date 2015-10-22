@@ -4,10 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import withStyles from '../../decorators/withStyles';
 import ErrorPageStyle from './styles/ErrorPage.css';
 
-let name = 'ErrorPage';
-let styles = {ErrorPageStyle};
-
-@withStyles(name, styles)
+@withStyles('ErrorPage', {ErrorPageStyle})
 class ErrorPage extends Component {
 
   static contextTypes = {

@@ -42,6 +42,7 @@ server.get('*', async (req, res, next) => {
       data.css = css.join('');
     });
 
+
     const html = ReactDOM.renderToStaticMarkup(<Html {...data} />);
     res.status(statusCode).send('<!doctype html>\n'+html);
   } catch (err) {

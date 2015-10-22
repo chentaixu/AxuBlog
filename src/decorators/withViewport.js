@@ -1,6 +1,6 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
-import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
+import React, { Component, PropTypes } from 'react'; // eslint-disable-line no-unused-vars
 import EventEmitter from 'eventemitter3';
 import { canUseDOM } from 'fbjs/lib/ExecutionEnvironment';
 
@@ -44,8 +44,19 @@ function withViewport(ComposedComponent) {
       }
     }
 
+    static childContextTypes = {
+      viewport: PropTypes.object.isRequired
+    };
+
+    getChildContext() {
+      let viewport = this.state.viewport;
+      return {
+        viewport: viewport
+      };
+    }
+
     render() {
-      return <ComposedComponent {...this.props} viewport={this.state.viewport}/>;
+      return <ComposedComponent {...this.props}/>;
     }
 
     handleResize(value) {
