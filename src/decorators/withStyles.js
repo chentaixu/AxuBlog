@@ -5,10 +5,6 @@ import invariant from 'fbjs/lib/invariant';
 import { canUseDOM } from 'fbjs/lib/ExecutionEnvironment';
 
 let count = 0;
-let DEFAULT_TYPE='default';
-let VARIANT_TYPE='variant';
-
-const getThemeStyle = (name, cssTheme, variant) => !variant? cssTheme[name][DEFAULT_TYPE]:cssTheme[name][VARIANT_TYPE][variant];
 
 const getUiClassNameMapping = (style, uiName, uiType) => (uiStates) => {
   let localUiName = style.locals[uiName]?style.locals[uiName]:'';
@@ -24,10 +20,6 @@ const getUiClassNameMapping = (style, uiName, uiType) => (uiStates) => {
 
 function withStyles(name, styles) {
   return (ComposedComponent) => class WithStyles extends Component {
-
-    static propTypes = {
-      uiVariant: PropTypes.string
-    };
 
     static contextTypes = {
       onInsertCss: PropTypes.func.isRequired,
@@ -72,7 +64,7 @@ function withStyles(name, styles) {
     }
 
     componentWillMount() {
-      let themeStyle = getThemeStyle(name,this.context.cssTheme,this.props.uiVariant);
+      let themeStyle = this.context.cssTheme[name];
       this.setState({themeStyle});
       if (canUseDOM) {
         invariant(styles[themeStyle].use, `The style-loader must be configured with reference-counted API.`);
@@ -95,15 +87,9 @@ function withStyles(name, styles) {
       }
     }
 
-    componentWillReceiveProps(nextProps) {
-      if(nextProps.uiVariant!==this.props.uiVariant){
-        this.setState({themeStyle: getThemeStyle(name, this.context.cssTheme, this.props.uiVariant)});
-      }
-    }
-
     render() {
       let uiStyle = styles[this.state.themeStyle];
-      let { uiVariant, uiInitialStates, ...other} = this.props;
+      let { uiInitialStates, ...other} = this.props;
       let getUiClassName = getUiClassNameMapping(uiStyle, name, this.props.uiType);
       if(!uiInitialStates) uiInitialStates = {};
 

@@ -1,4 +1,27 @@
 @import '../../GlobalVars.css';
 
+
 .HomePage {
+  &[data-uipart=content] {
+    flex-basis : 960px;
+    flex-grow  : 0;
+    flex-shrink: 0;
+  }
+
+  &[data-uipart=divider] {
+    flex-basis : 1px;
+    flex-grow  : 1;
+  }
+
+  &[data-uipart=githubLogo] {
+  }
+
+  &[data-uipart=blogLogo] {
+  }
+
+  &[data-uipart=bioLogo] {
+  }
+
+  &[data-uipart=nothingLogo] {
+  }
 }

@@ -13,14 +13,14 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
 global.WATCH = true;
-const config = require('./config')[0]; // Client-side bundle configuration
-const bundler = webpack(config);
+const webpackConfig = require('./webpack.config')[0]; // Client-side bundle configuration
+const bundler = webpack(webpackConfig);
 
 /**
  * Launches a development web server with "live reload" functionality -
  * synchronizing URLs, interactions and code changes across multiple devices.
  */
-export default async () => {
+async function start() {
 
   await require('./build')();
   await require('./serve')();
@@ -34,13 +34,10 @@ export default async () => {
         webpackDevMiddleware(bundler, {
           // IMPORTANT: dev middleware can't access config, so we should
           // provide publicPath by ourselves
-          publicPath: config.output.publicPath,
+          publicPath: webpackConfig.output.publicPath,
 
           // pretty colored output
-          stats: config.stats,
-
-          hot: true,
-          historyApiFallback: true
+          stats: webpackConfig.stats
 
           // for other settings see
           // http://webpack.github.io/docs/webpack-dev-middleware.html
@@ -61,4 +58,6 @@ export default async () => {
       'build/themes/**/*.*'
     ]
   });
-};
+}
+
+export default start;

@@ -6,30 +6,23 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
-
 import path from 'path';
 import replace from 'replace';
-import copy from './lib/copy';
+import Promise from 'bluebird';
 import watch from './lib/watch';
 
 /**
  * Copies static files such as robots.txt, favicon.ico to the
  * output (build) folder.
  */
-export default async () => {
-  console.log('copy');
+async function copy() {
+  const ncp = Promise.promisify(require('ncp'));
+
   await Promise.all([
-    // Static files
-    copy('src/public', 'build/public'),
-
-    // Files with content (e.g. *.md files)
-    copy('src/contents', 'build/contents'),
-
-    // Css themes
-    copy('src/themes', 'build/themes'),
-
-    // Packages
-    copy('package.json', 'build/package.json')
+    ncp('src/public', 'build/public'),
+    ncp('src/contents', 'build/contents'),
+    ncp('src/themes', 'build/themes'),
+    ncp('package.json', 'build/package.json')
   ]);
 
   replace({
@@ -41,16 +34,19 @@ export default async () => {
   });
 
   if (global.WATCH) {
-    const watcher = await watch('src/contents/**/*.*');
-    watcher.on('changed', async (file) => {
+    const contentsWatcher = await watch('src/contents/**/*.*');
+    contentsWatcher.on('changed', async (file) => {
       const relPath = file.substr(path.join(__dirname, '../src/contents/').length);
-      await copy(`src/contents/${relPath}`, `build/contents/${relPath}`);
+      await ncp(`src/contents/${relPath}`, `build/contents/${relPath}`);
     });
 
-    const themeWatcher = await watch('src/themes/**/*.*');
-    themeWatcher.on('changed', async(file)=>{
+    const themesWatcher = await watch('src/themes/**/*.*');
+    themesWatcher.on('changed', async (file) => {
       const relPath = file.substr(path.join(__dirname, '../src/themes/').length);
-      await copy(`src/themes/${relPath}`, `build/themes/${relPath}`);
-    })
+      await ncp(`src/themes/${relPath}`, `build/themes/${relPath}`);
+    });
+
   }
-};
+}
+
+export default copy;

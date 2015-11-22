@@ -1,46 +1,13 @@
 {
-  "App":{
-    "default":"AppStyle",
-    "variant":{}
-  },
-  "ContentPage":{
-    "default":"ContentPageStyle",
-    "variant":{}
-  },
-  "ErrorPage":{
-    "default":"ErrorPageStyle",
-    "variant":{}
-  },
-  "NotFoundPage":{
-    "default":"NotFoundPageStyle",
-    "variant":{}
-  },
-  "Segment": {
-    "default":"SegmentStyle",
-    "variant":{}
-  },
-  "Button": {
-    "default":"ButtonStyle",
-    "variant":{}
-  },
-  "Loader": {
-    "default":"LoaderStyle",
-    "variant":{}
-  },
-  "Header": {
-    "default":"HeaderStyle",
-    "variant":{}
-  },
-  "NavigationBar": {
-    "default":"NavigationBarStyle",
-    "variant":{}
-  },
-  "HomePage": {
-    "default":"HomePageStyle",
-    "variant":{}
-  },
-  "Section": {
-    "default":"SectionStyle",
-    "variant":{}
-  }
+  "App": "AppStyle",
+  "ContentPage": "ContentPageStyle",
+  "ErrorPage": "ErrorPageStyle",
+  "NotFoundPage": "NotFoundPageStyle",
+  "Segment": "SegmentStyle",
+  "Button": "ButtonStyle",
+  "Loader": "LoaderStyle",
+  "Header": "HeaderStyle",
+  "NavigationBar": "NavigationBarStyle",
+  "HomePage": "HomePageStyle",
+  "Section": "SectionStyle"
 }

@@ -1,17 +1,54 @@
 .Section {
 
   &[data-uipart='main'] {
-    flex-grow : 1;
-    flex-basis: 100px;
+    flex-grow : 0;
+    flex-basis: 236px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
   }
 
   &&--pillar {
     &[data-uipart='header'] {
       height: 100px;
+      font-family: 'neuropol-nova';
+      font-size: 80px;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 100px;
+      border-bottom: 1px solid black;
+      &.theme {
+        &-is-red {
+          color: red;
+        }
+        &-is-orange {
+          color: orange;
+        }
+        &-is-blue {
+          color: blue;
+        }
+        &-is-purple {
+          color: purple;
+        }
+      }
     }
+
     &[data-uipart='content'] {
       flex-grow : 1;
-      background: green;
+      justify-content: center;
+      &.theme {
+        &-is-red {
+          background: linear-gradient(to bottom, rgb(221, 36, 118), rgb(255, 81, 47));
+        }
+        &-is-orange {
+           background: linear-gradient(to bottom, rgb(255, 200, 55), rgb(255, 128, 8));
+        }
+        &-is-blue {
+           background: linear-gradient(to bottom, rgb(52, 152, 219), rgb(44, 62, 80));
+        }
+        &-is-purple {
+           background: linear-gradient(to bottom, rgb(100, 65, 165), rgb(42, 8, 69));
+        }
+      }
     }
   }
 

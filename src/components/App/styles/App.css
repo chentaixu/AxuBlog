@@ -13,50 +13,65 @@ html,body,:global(#app) {
   height    :100%;
 }
 
-:root {
+@font-face {
+  font-family: 'neuropol-nova-bold';
+  src: url('../fonts/neuropol-nova-bold.woff') format('woff');
+}
 
-  div[data-layout] {
-    display : flex;
-    flex-grow : 1;
+@font-face {
+  font-family: 'neuropol-nova';
+  src: url('../fonts/neuropol-nova.woff') format('woff');
+}
+
+
+div[data-layout] {
+  display : flex;
+  flex-grow : 1;
+}
+
+div[data-layout=app] {
+  flex-direction : column;
+  width   :100%;
+  height  :100%;
+}
+
+div[data-layout=canvas] {
+  width   :100%;
+  height  :100%;
+}
+
+div[data-justify=center] {
+  justify-content: center;
+}
+
+div[data-layout=row] {
+  flex-direction : row;
+}
+
+div[data-layout=column] {
+  flex-direction : column;
+}
+
+div[data-viewport-hide~=mobile] {
+  @media (--mobile-viewport) {
+    display : none;
   }
+}
 
-  div[data-layout=app] {
-    flex-direction : column;
-    width   :100%;
-    height  :100%;
+div[data-viewport-hide~=tablet] {
+  @media (--tablet-viewport) {
+    display : none;
   }
+}
 
-
-  div[data-layout=row] {
-    flex-direction : row;
+div[data-viewport-hide~=computer] {
+  @media (--computer-viewport) {
+    display : none;
   }
+}
 
-  div[data-layout=column] {
-    flex-direction : column;
+div[data-viewport-hide~=largeMonitor] {
+  @media (--largeMonitor-viewport) {
+    display : none;
   }
-
-  div[data-viewport-hide~=mobile] {
-    @media (--mobile-viewport) {
-      display : none;
-    }
-  }
-
-  div[data-viewport-hide~=tablet] {
-    @media (--tablet-viewport) {
-      display : none;
-    }
-  }
-
-  div[data-viewport-hide~=computer] {
-    @media (--computer-viewport) {
-      display : none;
-    }
-  }
-
-  div[data-viewport-hide~=largeMonitor] {
-    @media (--largeMonitor-viewport) {
-      display : none;
-    }
-  }
-
 }
