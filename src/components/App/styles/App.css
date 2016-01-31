@@ -13,6 +13,7 @@ html,body,:global(#app) {
   height    :100%;
 }
 
+
 @font-face {
   font-family: 'neuropol-nova-bold';
   src: url('../fonts/neuropol-nova-bold.woff') format('woff');
@@ -38,6 +39,7 @@ div[data-layout=app] {
 div[data-layout=canvas] {
   width   :100%;
   height  :100%;
+  position:relative;
 }
 
 div[data-justify=center] {

@@ -8,24 +8,35 @@ class Canvas extends Component {
     };
 
     static propTypes = {
-        toDraw: PropTypes.func.isRequired
+        layers: PropTypes.array.isRequired
     };
 
-
     drawCanvas() {
-        let canvas = this.canvasNode;
-        let height = this.canvasDiv.offsetHeight;
+        let height = this.canvasDiv.scrollHeight;
         let width = this.canvasDiv.offsetWidth;
-        this.props.toDraw(canvas,width,height);
+        let canvasObj = this;
+        this.props.layers.map(function(layer){
+            let layerNumber = 'layer'+layer.index;
+            let canvas = canvasObj[layerNumber];
+
+            canvas.width = width;
+            canvas.height= height;
+            layer.toDraw(canvas,width,height);
+        });
     };
 
     render() {
+        let canvasObj = this;
         return (
-            <div ref={(ref)=>this.canvasDiv=ref} data-layout='canvas'>
-              <canvas ref={(ref)=>this.canvasNode=ref} />
+            <div ref={(ref)=>this.canvasDiv=ref} data-layout='canvas' style={{overflow:"hidden"}}>
+
+              {this.props.layers.map(function(layer) {
+                let layerNumber = 'layer'+layer.index;
+                return <canvas key={layer.index} ref={(ref)=>canvasObj[layerNumber]=ref} style={{zIndex:layer.index,position:"absolute", top:0,left:0}}/>;})}
             </div>
         );
     }
+
 
     componentDidMount() {
         this.drawCanvas();

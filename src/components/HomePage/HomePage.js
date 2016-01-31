@@ -264,23 +264,34 @@ class NothingLogo extends Component {
     return(
       <svg viewBox="0 0 500 500">
         <polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="360.3,58.5 138.8,58.5 28,250 138.8,441.5 360.3,441.5
-		471,250 	"/>
+		471,250"/>
       </svg>
     );
   }
 }
 
 const drawPillar = (canvas,width,height) => {
-
-
-  canvas.width=width;
-  canvas.height=height;
   let ctx = canvas.getContext('2d');
   let grd = ctx.createLinearGradient(0,0,0,height);
+
+  ctx.beginPath();
+  ctx.arc(50,50,10,0,2*Math.PI);
+  ctx.fill();
+
   grd.addColorStop(0,'#3498db');
   grd.addColorStop(1,'#2c3e50');
   ctx.fillStyle = grd;
   ctx.fillRect(0,0,width,height);
+
+};
+
+const drawPillar2 = (canvas,width,height) => {
+  let ctx = canvas.getContext('2d');
+  ctx.beginPath();
+  ctx.moveTo(0,0);
+  ctx.lineTo(300,150);
+  ctx.stroke();
+
 };
 
 
@@ -304,26 +315,31 @@ class HomePage extends Component {
     this.context.onSetTitle('AXU.IO > Home');
     let uiClassName=this.props.getUiClassName(this.state.uiStates);
     return (
-      <div data-layout='row' data-justify='center'>
+      <div data-layout='row' data-justify='center' ref={(ref)=>this.homepage=ref}>
         <div className={uiClassName} data-uipart='content' data-layout='row'>
             <Section uiType={'pillar'} uiInitialStates={{theme:'blue'}} header={'01'}>
-                <Canvas toDraw={drawPillar}/>
+                <Canvas layers={[{index:1,toDraw:drawPillar},{index:2,toDraw:drawPillar2}]}/>
             </Section>
             <div className={uiClassName} data-uipart='divider'/>
             <Section uiType={'pillar'} uiInitialStates={{theme:'orange'}} header={'02'}>
-              <Canvas toDraw={drawPillar}/>
+              <Canvas layers={[{index:1,toDraw:drawPillar}]}/>
             </Section>
             <div className={uiClassName} data-uipart='divider'/>
             <Section uiType={'pillar'} uiInitialStates={{theme:'red'}} header={'03'}>
-              <Canvas toDraw={drawPillar}/>
+              <Canvas layers={[{index:1,toDraw:drawPillar}]}/>
             </Section>
             <div className={uiClassName} data-uipart='divider'/>
             <Section uiType={'pillar'} uiInitialStates={{theme:'purple'}} header={'04'}>
-              <Canvas toDraw={drawPillar}/>
+              <Canvas layers={[{index:1,toDraw:drawPillar}]}/>
             </Section>
         </div>
       </div>
     );
+  }
+
+  componentDidMount() {
+    console.log(this.homepage.offsetWidth);
+    console.log(this.homepage.offsetHeight);
   }
 
 }
