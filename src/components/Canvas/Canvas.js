@@ -11,17 +11,26 @@ class Canvas extends Component {
         layers: PropTypes.array.isRequired
     };
 
-    drawCanvas() {
-        let height = this.canvasDiv.scrollHeight;
+    state = {
+      intervals: List()
+    };
+
+    drawCanvas(updated) {
+        let height = this.canvasDiv.offsetHeight;
         let width = this.canvasDiv.offsetWidth;
         let canvasObj = this;
+        let canvasDivRef = this.canvasDiv;
+
+
         this.props.layers.map(function(layer){
             let layerNumber = 'layer'+layer.index;
             let canvas = canvasObj[layerNumber];
+            let intervalFuncs= layer.toDraw(canvas,width,height,updated,canvasDivRef);
+            if(intervalFuncs) {
+              console.log(intervalFuncs);
+              canvasObj.setState(({intervals})=>({intervals:canvasObj.state.intervals.push(...intervalFuncs)}));
+            }
 
-            canvas.width = width;
-            canvas.height= height;
-            layer.toDraw(canvas,width,height);
         });
     };
 
@@ -29,7 +38,6 @@ class Canvas extends Component {
         let canvasObj = this;
         return (
             <div ref={(ref)=>this.canvasDiv=ref} data-layout='canvas' style={{overflow:"hidden"}}>
-
               {this.props.layers.map(function(layer) {
                 let layerNumber = 'layer'+layer.index;
                 return <canvas key={layer.index} ref={(ref)=>canvasObj[layerNumber]=ref} style={{zIndex:layer.index,position:"absolute", top:0,left:0}}/>;})}
@@ -39,11 +47,16 @@ class Canvas extends Component {
 
 
     componentDidMount() {
-        this.drawCanvas();
+       this.drawCanvas(false);
     }
 
-    componentDidUpdate() {
-        this.drawCanvas();
+    componentWillReceiveProps() {
+      this.state.intervals.forEach(function(interval){
+        clearInterval(interval);
+        console.log(interval);
+      });
+      this.setState(({intervals})=>({intervals:List()}));
+      this.drawCanvas(true);
     }
 
 }

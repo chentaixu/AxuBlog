@@ -270,10 +270,12 @@ class NothingLogo extends Component {
   }
 }
 
-const drawPillar = (canvas,width,height) => {
+const drawGithubPillar = (canvas,width,height) => {
+
+  canvas.width = width;
+  canvas.height= height;
   let ctx = canvas.getContext('2d');
   let grd = ctx.createLinearGradient(0,0,0,height);
-
   ctx.beginPath();
   ctx.arc(50,50,10,0,2*Math.PI);
   ctx.fill();
@@ -285,14 +287,149 @@ const drawPillar = (canvas,width,height) => {
 
 };
 
-const drawPillar2 = (canvas,width,height) => {
+
+const drawBlogPillar = (canvas,width,height) => {
+
+  canvas.width = width;
+  canvas.height= height;
   let ctx = canvas.getContext('2d');
+  let grd = ctx.createLinearGradient(0,0,0,height);
+
   ctx.beginPath();
-  ctx.moveTo(0,0);
-  ctx.lineTo(300,150);
-  ctx.stroke();
+  ctx.arc(50,50,10,0,2*Math.PI);
+  ctx.fill();
+
+  grd.addColorStop(0,'#ffc837');
+  grd.addColorStop(1,'#ff8008');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0,0,width,height);
 
 };
+
+
+const drawBioPillar = (canvas,width,height) => {
+
+  canvas.width = width;
+  canvas.height= height;
+  let ctx = canvas.getContext('2d');
+  let grd = ctx.createLinearGradient(0,0,0,height);
+
+  ctx.beginPath();
+  ctx.arc(50,50,10,0,2*Math.PI);
+  ctx.fill();
+
+  grd.addColorStop(0,'#dd2476');
+  grd.addColorStop(1,'#ff512f');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0,0,width,height);
+
+};
+
+const drawNothingPillar = (canvas,width,height) => {
+
+  canvas.width = width;
+  canvas.height= height;
+  let ctx = canvas.getContext('2d');
+  let grd = ctx.createLinearGradient(0,0,0,height);
+
+  ctx.beginPath();
+  ctx.arc(50,50,10,0,2*Math.PI);
+  ctx.fill();
+
+  grd.addColorStop(0,'#6441a5');
+  grd.addColorStop(1,'#2a0845');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0,0,width,height);
+
+};
+
+class Particle {
+  constructor(color,radius,x,y,vx,vy,valpha,opacity) {
+    this.restart(color,radius,x,y,vx,vy,valpha,opacity);
+  }
+
+  restart(color,radius,x,y,vx,vy,valpha,opacity) {
+    this.color = color;
+    this.radius = radius;
+    this.x = x;
+    this.y = y;
+    this.vx = vx;
+    this.vy = vy;
+    this.valpha = valpha;
+    this.opacity = opacity;
+    this.life = 0;
+  }
+
+
+  update() {
+    this.x = this.x + this.vx/3;
+    this.y = this.y + this.vy/3;
+    if (this.opacity>=1 && this.valpha>0) this.valpha *= -1;
+    this.opacity += this.valpha /3;
+    this.life += this.valpha /3;
+    this.opacity= Math.min(1,Math.max(0,this.opacity));
+
+  }
+
+
+
+}
+
+const drawFlakePillar = (canvas,width,height,updated,canvasDiv) => {
+
+
+  canvas.width = width;
+  canvas.height= height;
+
+  let ctx = canvas.getContext('2d');
+  let rand = (a,b) => Math.random()*(b-a)+a;
+  let min = 1;
+  let max = 8;
+  let particleNum = 200;
+  let colors = ["255, 255, 255", "224, 224, 224", "160, 160, 160", "200, 200, 200"];
+  let particles = [];
+  let initParticleStats = ()=> {
+    let color = colors[~~(Math.random()*colors.length)];
+    let radius = rand(min,max);
+    let x = rand(0,canvasDiv.offsetWidth);
+    let y = rand(0,canvasDiv.offsetHeight*0.5);
+    let vx = -5 + Math.random()*10;
+    let vy = 0.8 *radius;
+    let valpha = rand(0.02,0.09);
+    let opacity = 0;
+    let life = 0;
+    return [color,radius,x,y,vx,vy,valpha,opacity,life];
+  };
+
+  for (let i=0; i<particleNum; i++){
+    let particle = new Particle(...initParticleStats());
+    particles.push(particle);
+  }
+
+  let drawParticles = () => {
+    ctx.clearRect(0,0,canvasDiv.offsetWidth,canvasDiv.offsetHeight);
+    particles.map(function(particle){
+      ctx.strokeStyle = "rgba(" + particle.color + ", " + Math.min(particle.opacity, 0.85) + ")";
+      ctx.fillStyle = "rgba(" + particle.color + ", " + Math.min(particle.opacity, 0.65) + ")";
+      ctx.beginPath();
+      ctx.arc(particle.x, particle.y, particle.radius, 2 * Math.PI, false);
+      ctx.fill();
+      ctx.stroke();
+    });
+  };
+
+  let updateParticles = () => {
+    particles.map(function(particle){
+      particle.update();
+      if(particle.life <0 || particle.y > canvasDiv.height){
+        particle.restart(...initParticleStats());
+      }
+    })
+  };
+
+  return [setInterval(drawParticles,1000/30),setInterval(updateParticles,1000/60)];
+};
+
 
 
 @withStyles('HomePage', {HomePageStyle})
@@ -318,29 +455,25 @@ class HomePage extends Component {
       <div data-layout='row' data-justify='center' ref={(ref)=>this.homepage=ref}>
         <div className={uiClassName} data-uipart='content' data-layout='row'>
             <Section uiType={'pillar'} uiInitialStates={{theme:'blue'}} header={'01'}>
-                <Canvas layers={[{index:1,toDraw:drawPillar},{index:2,toDraw:drawPillar2}]}/>
+                <Canvas layers={[{index:1,toDraw:drawGithubPillar},{index:2,toDraw:drawFlakePillar}]}/>
             </Section>
             <div className={uiClassName} data-uipart='divider'/>
             <Section uiType={'pillar'} uiInitialStates={{theme:'orange'}} header={'02'}>
-              <Canvas layers={[{index:1,toDraw:drawPillar}]}/>
+              <Canvas layers={[{index:1,toDraw:drawBlogPillar}]}/>
             </Section>
             <div className={uiClassName} data-uipart='divider'/>
             <Section uiType={'pillar'} uiInitialStates={{theme:'red'}} header={'03'}>
-              <Canvas layers={[{index:1,toDraw:drawPillar}]}/>
+              <Canvas layers={[{index:1,toDraw:drawBioPillar}]}/>
             </Section>
             <div className={uiClassName} data-uipart='divider'/>
             <Section uiType={'pillar'} uiInitialStates={{theme:'purple'}} header={'04'}>
-              <Canvas layers={[{index:1,toDraw:drawPillar}]}/>
+              <Canvas layers={[{index:1,toDraw:drawNothingPillar}]}/>
             </Section>
         </div>
       </div>
     );
   }
 
-  componentDidMount() {
-    console.log(this.homepage.offsetWidth);
-    console.log(this.homepage.offsetHeight);
-  }
 
 }
 
