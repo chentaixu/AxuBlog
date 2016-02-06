@@ -375,7 +375,7 @@ class Particle {
 
 }
 
-const drawFlakePillar = (canvas,width,height,updated,canvasDiv) => {
+const drawFlakePillar = (canvas,width,height) => {
 
 
   canvas.width = width;
@@ -391,8 +391,8 @@ const drawFlakePillar = (canvas,width,height,updated,canvasDiv) => {
   let initParticleStats = ()=> {
     let color = colors[~~(Math.random()*colors.length)];
     let radius = rand(min,max);
-    let x = rand(0,canvasDiv.offsetWidth);
-    let y = rand(0,canvasDiv.offsetHeight*0.5);
+    let x = rand(0,width);
+    let y = rand(0,height*0.5);
     let vx = -5 + Math.random()*10;
     let vy = 0.8 *radius;
     let valpha = rand(0.02,0.09);
@@ -407,7 +407,7 @@ const drawFlakePillar = (canvas,width,height,updated,canvasDiv) => {
   }
 
   let drawParticles = () => {
-    ctx.clearRect(0,0,canvasDiv.offsetWidth,canvasDiv.offsetHeight);
+    ctx.clearRect(0,0,width,height);
     particles.map(function(particle){
       ctx.strokeStyle = "rgba(" + particle.color + ", " + Math.min(particle.opacity, 0.85) + ")";
       ctx.fillStyle = "rgba(" + particle.color + ", " + Math.min(particle.opacity, 0.65) + ")";
@@ -421,7 +421,7 @@ const drawFlakePillar = (canvas,width,height,updated,canvasDiv) => {
   let updateParticles = () => {
     particles.map(function(particle){
       particle.update();
-      if(particle.life <0 || particle.y > canvasDiv.height){
+      if(particle.life <0 || particle.y > height){
         particle.restart(...initParticleStats());
       }
     })
@@ -459,15 +459,15 @@ class HomePage extends Component {
             </Section>
             <div className={uiClassName} data-uipart='divider'/>
             <Section uiType={'pillar'} uiInitialStates={{theme:'orange'}} header={'02'}>
-              <Canvas layers={[{index:1,toDraw:drawBlogPillar}]}/>
+              <Canvas layers={[{index:1,toDraw:drawBlogPillar},{index:2,toDraw:drawFlakePillar}]}/>
             </Section>
             <div className={uiClassName} data-uipart='divider'/>
             <Section uiType={'pillar'} uiInitialStates={{theme:'red'}} header={'03'}>
-              <Canvas layers={[{index:1,toDraw:drawBioPillar}]}/>
+              <Canvas layers={[{index:1,toDraw:drawBioPillar},{index:2,toDraw:drawFlakePillar}]}/>
             </Section>
             <div className={uiClassName} data-uipart='divider'/>
             <Section uiType={'pillar'} uiInitialStates={{theme:'purple'}} header={'04'}>
-              <Canvas layers={[{index:1,toDraw:drawNothingPillar}]}/>
+              <Canvas layers={[{index:1,toDraw:drawNothingPillar},{index:2,toDraw:drawFlakePillar}]}/>
             </Section>
         </div>
       </div>

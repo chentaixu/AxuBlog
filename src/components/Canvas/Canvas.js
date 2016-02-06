@@ -15,19 +15,16 @@ class Canvas extends Component {
       intervals: List()
     };
 
-    drawCanvas(updated) {
+    drawCanvas() {
         let height = this.canvasDiv.offsetHeight;
         let width = this.canvasDiv.offsetWidth;
         let canvasObj = this;
-        let canvasDivRef = this.canvasDiv;
-
 
         this.props.layers.map(function(layer){
             let layerNumber = 'layer'+layer.index;
             let canvas = canvasObj[layerNumber];
-            let intervalFuncs= layer.toDraw(canvas,width,height,updated,canvasDivRef);
+            let intervalFuncs= layer.toDraw(canvas,width,height);
             if(intervalFuncs) {
-              console.log(intervalFuncs);
               canvasObj.setState(({intervals})=>({intervals:canvasObj.state.intervals.push(...intervalFuncs)}));
             }
 
@@ -47,16 +44,15 @@ class Canvas extends Component {
 
 
     componentDidMount() {
-       this.drawCanvas(false);
+       this.drawCanvas();
     }
 
     componentWillReceiveProps() {
       this.state.intervals.forEach(function(interval){
         clearInterval(interval);
-        console.log(interval);
       });
       this.setState(({intervals})=>({intervals:List()}));
-      this.drawCanvas(true);
+      this.drawCanvas();
     }
 
 }
